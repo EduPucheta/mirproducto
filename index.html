@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cuanto ahorras pagando en cuotas</title>
+    <link rel="stylesheet" href="./css/style.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="main.js" defer></script>
+</head>
+<body>
+    <h1>Titulo del sitio</h1>
+    <h2>Poné el valor al contado y el valor en cuotas y te vamos a decir cuanto estás ahorrando</h2>
+    <form method="get" id="form1" >
+        <label for="precioencontado">Ingresa el precio en contado
+            <input type="text" id="precioencontado"  name="precioencontado" data-type="currency" placeholder="$12,000"></label>
+        <label for="valordelacuota">Valor cada cuota
+            <input type="text" id="valordelacuota" name="valordelacuota"  data-type="currency" placeholder="$1,000"></label>
+        <label for="cantidaddecuotas">Cantidad de cuotas
+            <input type="number" id="cantidaddecuotas" name="cantidaddecuotas"  placeholder="12"></label>
+        <button type="button" form="form1" value="Submit" id="submitbutton" onclick="myFunction()">Calcular</button>
+    </form>
+    <span id="mensajederesultado"></span>
+    <span id="spanResult" class="currencys"></span><br>
+    <span id="mensajederesultado2"></span>
+    <span id="spanResult2" class="currencys"></span><br>
+    <span id="mensajederesultado3"></span>
+</body>
+</html>
