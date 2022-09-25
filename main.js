@@ -1,7 +1,3 @@
-
-console.log("lalo")
-// console.log(precioencontado3)
-
 const valordelacuota = document.querySelectorAll('#valordelacuota').value;
 
 //const cantidaddecuotas = document.querySelectorAll('#cantidaddecuotas').value;
@@ -40,7 +36,7 @@ function myFunction(e) {
     const valordelacuota4 = valordelacuota2.replace(',', '');
     // cantidaddecuotas.replace('$', '');
     document.getElementById('mensajederesultado').textContent =  "El valor total en cuotas es: "
-    document.getElementById('spanResult').textContent = parseFloat(valordelacuota4) * parseFloat(cantidaddecuotas);
+    document.getElementById('spanResult').textContent = formatter.format(parseFloat(valordelacuota4) * parseFloat(cantidaddecuotas)) ;
     event.preventDefault();
     PV();
   }
@@ -49,35 +45,32 @@ function myFunction(e) {
   function PV() {
     cantidaddecuotas = document.getElementById('cantidaddecuotas').value;
     cantidaddecuotas.replace('$', '');
-    console.log("Cantidad de cuotas: " + cantidaddecuotas);
     const valordelacuota = document.getElementById('valordelacuota').value;
     const valordelacuota2 = valordelacuota.replace('$', '');
     const valordelacuota4 = valordelacuota2.replace(',', '');
-    console.log("Valor de la cuota: " + valordelacuota4);
-    console.log("Rate: " + rate);
     rate2 = parseFloat(rate) / 100.0;
     const valoractual = valordelacuota4 / rate * (1 - Math.pow(1 + rate2, cantidaddecuotas));
-    console.log("Valor actual de la cuota: " + valoractual);
     var valoractualresult2 = 0;
     for(var i = 0; i <= cantidaddecuotas; i++){
       valoractualresult = valordelacuota4 / Math.pow(1+rate2,cantidaddecuotas);
       valoractualresult2 = valoractualresult2 + valoractualresult ;
     }
-    console.log("valoractualresult: " + valoractualresult2);
     document.getElementById('mensajederesultado2').textContent =  "El valor actual de las cuotas es: "
-    document.getElementById('spanResult2').textContent = valoractualresult2;
+    document.getElementById('spanResult2').textContent = formatter.format(valoractualresult2) ;
     const precioencontado3 = document.getElementById('precioencontado').value;
     const precioencontado2 = precioencontado3.replace('$', '');
     const precioencontado = precioencontado2.replace(',', '');
+
     if(precioencontado>valoractualresult2){
-      document.getElementById('mensajederesultado3').textContent =  "Te conviene pagar en cuotas."
+      const ahorro = precioencontado - valoractualresult2;
+      document.getElementById('mensajederesultado3').textContent =  "Te conviene pagar en cuotas. Te estás ahorando " + formatter.format(ahorro) + " gracias a  la inflación."
+    }
+    else{
+      document.getElementById('mensajederesultado4').textContent =  "Te conviene en contado."
     }
     console.log(precioencontado)
+    
   }
-
-
-
-  
 
 
 cantidaddecuotas = document.getElementById('cantidaddecuotas').value;
@@ -90,8 +83,11 @@ cantidaddecuotas.replace('$', '');
 
 
 
-// Jquery Dependency
 
+
+
+
+// Jquery Dependency
 $("input[data-type='currency']").on({
   keyup: function() {
     formatCurrency($(this));
@@ -171,3 +167,19 @@ caret_pos = updated_len - original_len + caret_pos;
 input[0].setSelectionRange(caret_pos, caret_pos);
 }
 
+//
+
+// Create our number formatter.
+var formatter = new Intl.NumberFormat('en-US', {
+  style: 'currency',
+  currency: 'USD',
+
+  // These options are needed to round to whole numbers if that's what you want.
+  //minimumFractionDigits: 0, // (this suffices for whole numbers, but will print 2500.10 as $2,500.1)
+  //maximumFractionDigits: 0, // (causes 2500.99 to be printed as $2,501)
+});
+
+formatter.format(2500); /* $2,500.00 */
+
+
+console.log(formatter.format(2500))

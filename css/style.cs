@@ -2,6 +2,22 @@
 npm init
 sass --watch scss/style.scss css/style.css 
 */
+.input {
+  top: 16px;
+  left: 16px;
+  width: 249px;
+  height: 66px;
+  background: rgba(255, 255, 255, 0);
+}
+
+#state_default__required_no {
+  top: 16px;
+  left: 16px;
+  width: 249px;
+  height: 66px;
+  background: rgba(255, 255, 255, 0);
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -27,7 +43,7 @@ html body form label {
   margin-bottom: 25px;
   font-weight: bold;
 }
-html body form input {
+html body form input2 {
   display: block;
   width: 100%;
   border: 2px solid #343050;
@@ -36,7 +52,7 @@ html body form input {
   border-radius: 5px;
   transition: 0.4s ease;
 }
-html body form input::before {
+html body form input2::before {
   content: "$";
 }
 html body form button {
