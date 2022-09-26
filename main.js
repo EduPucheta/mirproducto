@@ -76,9 +76,27 @@ function myFunction(e) {
 cantidaddecuotas = document.getElementById('cantidaddecuotas').value;
 cantidaddecuotas.replace('$', '');
 
+function showoptions(){
+  var elems = document.getElementsByClassName('impuestosellos');
+  for (var i=0;i<elems.length;i+=1){
+  elems[i].style.display = 'contents';
+  }
+}
 
 
 
+function showoptions2() {
+  var x =  document.getElementsByClassName('impuestosellos');
+  x[0].style.display = 'block';
+  for (const element of elements) {
+    element.style.display = 'block';
+  }
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
 
 
 
