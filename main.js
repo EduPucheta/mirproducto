@@ -1,33 +1,11 @@
-const valordelacuota = document.querySelectorAll('#valordelacuota').value;
-
-//const cantidaddecuotas = document.querySelectorAll('#cantidaddecuotas').value;
-
-
-
-//alert("El valor total de las cuotas es: " + valorencuotas())
+var rate = 7
+var rate3 = document.getElementById("inflacion__number");
+console.log(rate3);
 
 
-// const Evalordelacuota = document.querySelectorAll('#valordelacuota')[0];
-// Evalordelacuota.addEventListener('userInput');
-
-
-//var ele = document.querySelectorAll("#submitbutton");
-//function myFunction(){
-//if(ele.addEventListener){
-  //  ele.addEventListener("submit", callback, false);  //Modern browsers
-//}else if(ele.attachEvent){
-  //  ele.attachEvent('onsubmit', callback);            //Old IE
-//} 
-//alert("El valor total de las cuotas es: " + valorencuotas())
-// }
-
-
-//function myFunction(){
-//    var ele = document.querySelectorAll("#submitbutton");
-//    ele.addEventListener("submit", callback, false);
-//    alert("El valor total de las cuotas es: " + valorencuotas())
-//}
-
+function formula(){
+  return rate = rate3.value/12;
+}
 
 function myFunction(e) {
     const cantidaddecuotas = document.getElementById('cantidaddecuotas').value;
@@ -35,13 +13,13 @@ function myFunction(e) {
     const valordelacuota2 = valordelacuota.replace('$', '');
     const valordelacuota4 = valordelacuota2.replace(',', '');
     // cantidaddecuotas.replace('$', '');
-    document.getElementById('mensajederesultado').textContent =  "El valor total en cuotas es: "
+    document.getElementById('mensajederesultado').textContent =  "La suma de las cuotas es: "
     document.getElementById('spanResult').textContent = formatter.format(parseFloat(valordelacuota4) * parseFloat(cantidaddecuotas)) ;
     event.preventDefault();
     PV();
   }
 
-  const rate = 7
+
   function PV() {
     cantidaddecuotas = document.getElementById('cantidaddecuotas').value;
     cantidaddecuotas.replace('$', '');
@@ -65,38 +43,47 @@ function myFunction(e) {
       const ahorro = precioencontado - valoractualresult2;
       document.getElementById('mensajederesultado3').textContent =  "Te conviene pagar en cuotas. Te estás ahorando " + formatter.format(ahorro) + " gracias a  la inflación."
     }
-    else{
+    if(precioencontado<valoractualresult2){
       document.getElementById('mensajederesultado4').textContent =  "Te conviene en contado."
     }
     console.log(precioencontado)
-    
+    document.getElementById('resultado__detalle').textContent =  "El cálculo asume que los ingresos mensuales aumentan a la par que la inflación. " + "La inflación estimada mensual para este cálculo es " + rate +"%.";
+
   }
 
 
 cantidaddecuotas = document.getElementById('cantidaddecuotas').value;
 cantidaddecuotas.replace('$', '');
 
-function showoptions(){
-  var elems = document.getElementsByClassName('impuestosellos');
-  for (var i=0;i<elems.length;i+=1){
-  elems[i].style.display = 'contents';
+function showoptions3(){
+  var element = document.getElementsByClassName('detalle');
+  console.log(element.getComputedStyle.display );
+  element.style = 'block';
+  for (var i=0;i<element.length;i+=1){
+    element[i].style.display = 'block';
   }
 }
 
 
-
-function showoptions2() {
-  var x =  document.getElementsByClassName('impuestosellos');
-  x[0].style.display = 'block';
-  for (const element of elements) {
-    element.style.display = 'block';
-  }
+function showoptions() {
+  var x = document.getElementById('detalle');
   if (x.style.display === "none") {
     x.style.display = "block";
   } else {
     x.style.display = "none";
   }
 }
+
+
+function showoptions2() {
+  var x = document.getElementById('impuestosellos');
+  if (x.style.display === "flex") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "flex";
+    }
+  }
+
 
 
 

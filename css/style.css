@@ -77,6 +77,9 @@ html body {
   font-family: "Inter";
   background-color: #F1F1FA;
 }
+html body h2 {
+  margin-bottom: 10px;
+}
 @media (min-width: 1025px) {
   html body {
     /* big landscape tablets, laptops, and desktops */
@@ -101,6 +104,9 @@ html body .cuotas__app form {
   font-style: normal;
   font-weight: 800;
   /* The switch - the box around the slider */
+  /* Hide default HTML checkbox */
+  /* The slider */
+  /* Rounded sliders */
 }
 html body .cuotas__app form .label {
   display: flex;
@@ -121,34 +127,34 @@ html body .cuotas__app form .advaced_options__withoptions .advaced_options {
   font-size: 12px;
   display: flex;
   margin-bottom: 10px;
+  cursor: pointer;
 }
 html body .cuotas__app form .advaced_options__withoptions .advaced_options p {
   align-self: center;
   margin-left: 5px;
 }
-html body .cuotas__app form .impuestosellos {
+html body .cuotas__app form #impuestosellos {
   display: none;
+  flex-direction: row;
+  justify-items: baseline;
+  margin-bottom: 5px;
 }
-html body .cuotas__app form .impuestosellos p {
+html body .cuotas__app form #impuestosellos #detalle {
   font-size: small;
-}
-html body .cuotas__app form .impuestosellos > * {
-  display: none;
+  margin-left: 5px;
 }
 html body .cuotas__app form .switch {
   position: relative;
-  display: none;
-  width: 30px;
-  height: 17px;
-  /* Hide default HTML checkbox */
-  /* Rounded sliders */
+  display: inline-block;
+  width: 60px;
+  height: 34px;
 }
 html body .cuotas__app form .switch input {
   opacity: 0;
   width: 0;
   height: 0;
 }
-html body .cuotas__app form .switch .slider {
+html body .cuotas__app form .slider {
   position: absolute;
   cursor: pointer;
   top: 0;
@@ -159,32 +165,32 @@ html body .cuotas__app form .switch .slider {
   -webkit-transition: 0.4s;
   transition: 0.4s;
 }
-html body .cuotas__app form .switch .slider::before {
+html body .cuotas__app form .slider:before {
   position: absolute;
   content: "";
-  height: 13px;
-  width: 13px;
-  left: 2px;
-  bottom: 2px;
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
   background-color: white;
   -webkit-transition: 0.4s;
   transition: 0.4s;
 }
-html body .cuotas__app form .switch input:checked + .slider {
+html body .cuotas__app form input:checked + .slider {
   background-color: #2196F3;
 }
-html body .cuotas__app form .switch input:focus + .slider {
+html body .cuotas__app form input:focus + .slider {
   box-shadow: 0 0 1px #2196F3;
 }
-html body .cuotas__app form .switch input:checked + .slider:before {
+html body .cuotas__app form input:checked + .slider:before {
   -webkit-transform: translateX(26px);
   -ms-transform: translateX(26px);
   transform: translateX(26px);
 }
-html body .cuotas__app form .switch .round {
+html body .cuotas__app form .slider.round {
   border-radius: 34px;
 }
-html body .cuotas__app form .switch .round::before {
+html body .cuotas__app form .slider.round:before {
   border-radius: 50%;
 }
 html body .cuotas__app form button {
@@ -206,6 +212,7 @@ html body .cuotas__app form button {
   border: 2px solid #4535CC;
   border-radius: 10px;
   color: #FFFFFF;
+  cursor: pointer;
 }
 html body .cuotas__app form button:disabled {
   box-sizing: border-box;
@@ -218,6 +225,8 @@ html body .cuotas__app form button:disabled {
   border-radius: 10px;
 }
 html body .cuotas__app #resultados {
+  display: flex;
+  flex-direction: column;
   margin-top: 10px;
 }
 html body .cuotas__app #resultados #mensajederesultado3 {
@@ -225,6 +234,9 @@ html body .cuotas__app #resultados #mensajederesultado3 {
 }
 html body .cuotas__app #resultados #mensajederesultado4 {
   color: red;
+}
+html body .cuotas__app #resultados #resultado__detalle {
+  font-size: small;
 }
 
 /*# sourceMappingURL=style.css.map */
