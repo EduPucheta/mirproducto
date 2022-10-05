@@ -4,6 +4,7 @@ sass --watch scss/style.scss css/style.css
 */
 
 @import "form_elements.scss";
+@import "variables.scss";
 
 
 * {
@@ -25,7 +26,7 @@ html {
 
     @media (min-width:1025px) {
       /* big landscape tablets, laptops, and desktops */
-      background-color: #4535CC;
+      background-color: $color-fondo;
     }
 
     .cuotas__app {
@@ -47,7 +48,34 @@ html {
         font-family: 'Inter';
         font-style: normal;
         font-weight: 800;
-
+        .chips__cuotas{
+          display: flex;
+          flex-wrap: wrap;
+          button{
+            margin-top: 10px;
+            border: none;
+            box-shadow: none;
+            border-radius: 100px;
+            max-height: 30px;
+            width: 100px;
+            font-size: small;
+            padding: 10px;
+            background-color: $color-chips;
+            color: black;
+            transition-duration: 0.3s;
+          }
+          .boton{
+            margin-left: 5px;
+            margin-right: 5px;
+            &:hover{
+              background-color: $color-fondo;
+            }
+          }
+        }
+        #cantidaddecuotas{
+          display: none;
+          
+        }
         .label {
           display: flex;
           flex-direction: column;
@@ -58,7 +86,6 @@ html {
           font-size: 14px;
           line-height: 18px;
           letter-spacing: -0.02em;
-
           >* {
             margin: 10px 0;
           }
@@ -172,6 +199,7 @@ input:checked + .slider:before {
           border-radius: 10px;
           color: #FFFFFF;
           cursor: pointer;
+          transition: 0.3s;
 
           &:disabled {
             box-sizing: border-box;

@@ -41,7 +41,7 @@ function myFunction(e) {
 
     if(precioencontado>valoractualresult2){
       const ahorro = precioencontado - valoractualresult2;
-      document.getElementById('mensajederesultado3').textContent =  "Te conviene pagar en cuotas. Te estás ahorando " + formatter.format(ahorro) + " gracias a  la inflación."
+      document.getElementById('mensajederesultado3').textContent =  "Te conviene pagar en cuotas. Te estás ahorrando " + formatter.format(ahorro) + " producto de la inflación."
     }
     if(precioencontado<valoractualresult2){
       document.getElementById('mensajederesultado4').textContent =  "Te conviene en contado."
@@ -84,6 +84,15 @@ function showoptions2() {
     }
   }
 
+  function showoptions3() {
+    var x = document.getElementById('cantidaddecuotas');
+    if (x.style.display === "flex") {
+      x.style.display = "none";
+    } else {
+      x.style.display = "flex";
+      }
+    }
+  
 
 
 
@@ -188,3 +197,5 @@ formatter.format(2500); /* $2,500.00 */
 
 
 console.log(formatter.format(2500))
+
+
