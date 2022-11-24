@@ -5,7 +5,7 @@ sass --watch scss/style.scss css/style.css
 
 @import "form_elements.scss";
 @import "variables.scss";
-
+@import "modal.scss";
 
 * {
   margin: 0;
@@ -14,44 +14,162 @@ sass --watch scss/style.scss css/style.css
 
 html {
   min-height: 100%;
-
   body {
-    h2{
-      margin-bottom: 10px;
-    }    
-    margin: 25px;
     max-height: 70%;
+    color: $color-font;
     font-family: 'Inter';
-    background-color: #F1F1FA;
+    font-style: normal;
+    background-color: $color-primary-0;
+    background-image: linear-gradient(160deg, $color-dark-primary-0 0%, #f04e98 100%);
+    nav {
+      height: 75px;
+      img {
+        width: 210px;
+        height: 50px;
+        @media (min-width: 1025px) {
+          margin-left: 200px;
+        }
+      }
+      #myBtn {
+        border: 1px solid rgba(104, 78, 214, 0.24);
+        border-radius: 18px;
+        color: $color-font;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 20px;
+        background: #f1f1fa;
+        padding: 5px;
+        float: right;
+        height: 30px;
+        margin-top: 25px;
+        margin-right: 250px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        transition: $transition-speed; 
+        &:hover{
+          background-color: $color-primary-1;
+          color: white;
+          
+        }
+        @media (max-width: 1025px) {
+          margin-right: 15px;
+          max-width: 90px;
+          overflow-wrap: break-word;
+          word-wrap: break-word;
+          word-break: break-word;
+          height: 50px;
+          margin-top: 15px;
+        }
+      }
+    }
+    h1 {
+      font-style: normal;
+      font-weight: 800;
+      font-size: 16px;
+    }
+    h2 {
+      font-weight: 800;
+      font-size: 21px;
+      line-height: 24px;
+      margin-bottom: 10px;
+      margin-bottom: 15px;
+      text-align: center;
 
-    @media (min-width:1025px) {
-      /* big landscape tablets, laptops, and desktops */
-      background-color: $color-fondo;
+    }
+    .modal-content {
+      max-width: 600px;
+      .modal-content__title {
+        font-size: large;
+      }
+      .modal-content__start__button {
+        box-sizing: border-box;
+        /* Auto layout */
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        padding: 12px 24px;
+        gap: 10px;
+        width: 100%;
+        height: 44px;
+        left: 16px;
+        top: 16px;
+        /* Primary */
+        background: $color-chips;
+        /* Primary */
+        border: none;
+        border-radius: 7px;
+        color: black;
+        cursor: pointer;
+        transition: 0.3s;
+        &:hover {
+          background-color: rgb(144, 0, 255);
+          color: white;
+        }
+      }
     }
 
     .cuotas__app {
-      @media (min-width:1025px) {
+      margin-left: 5%;
+      margin-right: 5%;
+      background-color: #f1f1fa;
+      padding: 5%;
+      border-radius: 7px;
+      box-shadow: $box-shadow;
+      @media (min-width: 1025px) {
         /* big landscape tablets, laptops, and desktops */
         max-width: 1000px;
         margin-top: 50px;
         margin-left: 25%;
         margin-right: 25%;
-        background-color: #F1F1FA;
+        background-color: #f1f1fa;
         padding: 5%;
+        border-radius: 7px;
+        box-shadow: $box-shadow;
       }
-
+      .main__text {
+        display: flex;
+        justify-content: right;
+      }
 
       // background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(97, 186, 255, 1) 0%, rgba(166, 239, 253, 1) 90.1%);
       form {
         display: flex;
         flex-direction: column;
-        font-family: 'Inter';
+        font-family: "Inter";
         font-style: normal;
         font-weight: 800;
-        .chips__cuotas{
+
+        #chip__cuotas1 {
           display: flex;
           flex-wrap: wrap;
-          button{
+          input {
+            border: 1px solid rgba(0, 0, 0, 0.12);
+            border-radius: 16px;
+            background: $color-button-unselected;
+            text-align: center;
+            margin-left: 5px;
+            margin-right: 5px;
+            margin-top: 5px;
+            margin-bottom: 5px;
+            box-shadow: none;
+            max-height: 37px;
+            width: 90px;
+            font-size: small;
+            padding: 10px;
+            transition-duration: 0.3s;
+            &:hover {
+              background: $color-button-chip-op1;
+              border: 1px solid $color-button-chip-op1-border;
+            }
+          }
+
+          .selected {
+            background: $color-button-chip-op1-selected;
+            border: 1px solid $color-button-chip-op1-border;
+          }
+
+          button {
             margin-top: 10px;
             border: none;
             box-shadow: none;
@@ -64,29 +182,56 @@ html {
             color: black;
             transition-duration: 0.3s;
           }
-          .boton{
+        }
+        #chip__cuotas2 {
+          display: flex;
+          flex-wrap: wrap;
+          input {
+            border: 1px solid rgba(0, 0, 0, 0.12);
+            border-radius: 16px;
+            background: $color-button-unselected;
+            text-align: center;
             margin-left: 5px;
             margin-right: 5px;
-            &:hover{
-              background-color: $color-fondo;
+            margin-top: 5px;
+            margin-bottom: 5px;
+            box-shadow: none;
+            max-height: 37px;
+            width: 90px;
+            font-size: small;
+            padding: 10px;
+            transition-duration: 0.3s;
+            &:hover {
+              border: 1px solid $color-button-chip-op2-border;
+              border-radius: 16px;
             }
           }
+          .selected2{
+            background-color: rgba(237, 139, 0, 0.16);
+            border: 1px solid rgba(237, 139, 0, 1);
+          }
         }
-        #cantidaddecuotas{
+
+        #cantidaddecuotas {
           display: none;
-          
+          transition-duration: 0.3s;
+        }
+        #cantidaddecuotas2 {
+          display: none;
+          transition-duration: 0.3s;
         }
         .label {
+          background: rgba(105, 78, 214, 0.08);
+          border: 1px;
+          border-radius: 4px 4px 0px 0px;
           display: flex;
           flex-direction: column;
-          margin-top: 10px;
-          margin-bottom: 10px;
-          font-size: 14px;
-          line-height: 18px;
+          margin-top: $uxg-spacing-2;
+          margin-bottom: $uxg-spacing-2;
           font-size: 14px;
           line-height: 18px;
           letter-spacing: -0.02em;
-          >* {
+          > * {
             margin: 10px 0;
           }
         }
@@ -99,13 +244,15 @@ html {
             margin-bottom: 10px;
             cursor: pointer;
             p {
-              align-self: center;
+              vertical-align: baseline;
               margin-left: 5px;
+              margin-top: auto;
+              margin-bottom: auto;
             }
           }
         }
 
-        #impuestosellos {
+        #advanced__options {
           display: none;
           flex-direction: row;
           justify-items: baseline;
@@ -116,70 +263,8 @@ html {
           }
         }
 
-/* The switch - the box around the slider */
-.switch {
-  position: relative;
-  display: inline-block;
-  width: 60px;
-  height: 34px;
-}
 
-/* Hide default HTML checkbox */
-.switch input {
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
-
-/* The slider */
-.slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #ccc;
-  -webkit-transition: .4s;
-  transition: .4s;
-}
-
-.slider:before {
-  position: absolute;
-  content: "";
-  height: 26px;
-  width: 26px;
-  left: 4px;
-  bottom: 4px;
-  background-color: white;
-  -webkit-transition: .4s;
-  transition: .4s;
-}
-
-input:checked + .slider {
-  background-color: #2196F3;
-}
-
-input:focus + .slider {
-  box-shadow: 0 0 1px #2196F3;
-}
-
-input:checked + .slider:before {
-  -webkit-transform: translateX(26px);
-  -ms-transform: translateX(26px);
-  transform: translateX(26px);
-}
-
-/* Rounded sliders */
-.slider.round {
-  border-radius: 34px;
-}
-
-.slider.round:before {
-  border-radius: 50%;
-}
-
-        button {
+        #submitbutton {
           box-sizing: border-box;
           /* Auto layout */
           display: flex;
@@ -193,43 +278,76 @@ input:checked + .slider:before {
           left: 16px;
           top: 16px;
           /* Primary */
-          background: #4535CC;
+          background: $color-primary-0;
           /* Primary */
-          border: 2px solid #4535CC;
-          border-radius: 10px;
-          color: #FFFFFF;
+          border: none;
+          border-radius: 24px;
+          color: white;
           cursor: pointer;
-          transition: 0.3s;
-
+          transition: $transition-speed;
+          &:hover {
+            background-color: $color-primary-1;
+            color: white;
+          }
           &:disabled {
             box-sizing: border-box;
             /* Auto layout */
             /* Primary Dark */
-            background: #372AA3;
+            background: #372aa3;
             opacity: 0.4;
             /* Primary Dark */
-            border: 2px solid #372AA3;
+            border: 2px solid $color-background-1;
             border-radius: 10px;
           }
-        }
-      }
-
-      #resultados {
-        display: flex;
-        flex-direction: column;
-        margin-top: 10px;
-
-        #mensajederesultado3 {
-          color: green;
-        }
-
-        #mensajederesultado4 {
-          color: red;
-        }
-        #resultado__detalle{
-          font-size: small;
         }
       }
     }
   }
 }
+
+#resultados2 {
+  display: none;
+  flex-direction: column;
+}
+
+#resultados {
+  display: flex;
+  flex-direction: column;
+  #mensajederesultado3 {
+    //order: 1;
+    order: -1;
+  }
+}
+
+#resultados > * {
+  font-weight: bold;
+  margin-top: $uxg-spacing-2;
+  margin-bottom: $uxg-spacing-2;
+  margin-left: 5%;
+  margin-right: 5%;
+  background-color: #f1f1fa;
+  padding: 5%;
+  border-radius: 7px;
+  box-shadow: $box-shadow;
+  @media (min-width: 1025px) {
+    /* big landscape tablets, laptops, and desktops */
+    max-width: 1000px;
+    margin-top: $uxg-spacing-4;
+    margin-left: 25%;
+    margin-right: 25%;
+    background-color: #f1f1fa;
+    padding: 5%;
+    border-radius: 7px;
+    box-shadow: $box-shadow;
+
+    #mensajederesultado4 {
+      color: red;
+    }
+    #resultado__detalle {
+      font-size: small;
+    }
+  }
+}
+
+
+
