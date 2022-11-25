@@ -135,10 +135,6 @@ function showoptions2() {
 // VALOR TOTAL EN CONTADO
 
 function myFunction(e) {
-  g = document.createElement("div");
-  g.setAttribute("id", "resultados");
-  document.querySelector("body").appendChild(g);
-  document.querySelector("#resultados").style.display = "flex";
 
   // OPCIÓN 1
   if (
@@ -157,23 +153,7 @@ function myFunction(e) {
   const valordelacuota = document.getElementById("valordelacuota").value;
   const valordelacuota2 = valordelacuota.replace("$", "");
   const valordelacuota4 = valordelacuota2.replace(",", "");
-  // Crea card de resultado de suma de cuotas en contado.
-  paymentsSumResults = document.createElement("span");
-  paymentsSumResults.setAttribute("id", "paymentsSumResults");
-  document.querySelector("#resultados").appendChild(paymentsSumResults);
-
-  paymentsSumOp1 = document.createElement("span");
-  paymentsSumOp1.setAttribute("id", "mensajederesultado3");
-  paymentsSumResults.appendChild(paymentsSumOp1);
-  paymentsSumResults.appendChild(document.createElement("br"));
-  paymentsSumOp1.textContent =
-    "La suma de las cuotas de la primera opción es: ";
-  paymentsSum$Op1 = document.createElement("span");
-  paymentsSumOp1.appendChild(paymentsSum$Op1);
-  paymentsSum$Op1.textContent =
-    formatter.format(
-      parseFloat(valordelacuota4) * parseFloat(cantidaddecuotas)
-    ) + ".";
+  
 
   // OPCIÓN 2
   if (
@@ -195,17 +175,6 @@ function myFunction(e) {
   const valordelacuota2Op2 = valordelacuotaOp2.replace("$", "");
   const valordelacuota4Op2 = valordelacuota2Op2.replace(",", "");
 
-  paymentsSumOp2 = document.createElement("span");
-  paymentsSumOp2.setAttribute("id", "mensajederesultado2Opt2");
-  paymentsSumResults.appendChild(paymentsSumOp2);
-  paymentsSumOp2.textContent =
-    "La suma de las cuotas de la segunda opción es: ";
-  paymentsSum$Op2 = document.createElement("span");
-  paymentsSumOp2.appendChild(paymentsSum$Op2);
-  paymentsSum$Op2.textContent =
-    formatter.format(
-      parseFloat(valordelacuota4Op2) * parseFloat(cantidaddecuotasOp2)
-    ) + ".";
   PV();
 }
 
@@ -226,48 +195,6 @@ function PV() {
   const valordelacuota4 = valordelacuota2.replace(",", "");
   anualInflation = document.querySelector("#inflacion__number").value;
   // Cálculo de la tasa efectiva mensual a partir de la anual
-  rate = (Math.pow(1 + anualInflation / 100, 1 / 12) - 1) * 100;
-  rate2 = parseFloat(rate) / 100.0;
-  //const valoractual = valordelacuota4 / rate * (1 - Math.pow(1 + rate2, cantidaddecuotas));
-  let valoractualresult2 = 0;
-  const valoractualDeCadaCuota = [];
-  const numeroDeCadaCuota = [];
-  // Acá se calcula el valor actual de la suma de las cuotas//
-  if (cantidaddecuotas != 0) {
-    for (let i = 0; i < cantidaddecuotas; i += 1) {
-      valoractualresult = valordelacuota4 / Math.pow(1 + rate2, i + 1);
-      valoractualresult2 += valoractualresult;
-      valoractualDeCadaCuota.push(valoractualresult);
-      numeroDeCadaCuota.push("Cuota Nº " + (i + 1));
-    }
-  } else {
-    valoractualresult = valordelacuota4;
-    valoractualresult2 = valordelacuota4;
-    valoractualDeCadaCuota.push(valoractualresult);
-    numeroDeCadaCuota.push("Cuota Nº 0");
-  }
-  const arr1 = numeroDeCadaCuota;
-  const arr2 = valoractualDeCadaCuota;
-
-  const obj = {};
-  // Aca creo un objeto pero no se esta usando en ningun lado aun.
-  arr1.forEach((element, index) => {
-    obj[element] = arr2[index];
-  });
-
-  // Crea card de descripción de valores actuales.
-  actualValuesResults = document.createElement("span");
-  actualValuesResults.setAttribute("id", "actualValuesResults");
-  document.querySelector("#resultados").appendChild(actualValuesResults);
-
-  actualValueResult = document.createElement("span");
-  actualValueResult.setAttribute("id", "actualValueResult");
-  actualValuesResults.appendChild(actualValueResult);
-  actualValueResult.textContent = "El valor actual de la opción 1 es: ";
-  actualValue$Result = document.createElement("span");
-  actualValueResult.appendChild(actualValue$Result);
-  actualValue$Result.textContent = formatter.format(valoractualresult2) + ". ";
-  actualValuesResults.appendChild(document.createElement("br"));
 
   // OPCION 2
   if (document.querySelector(".selected2").hasAttribute("data-test2")) {
@@ -284,112 +211,7 @@ function PV() {
   const valordelacuota4Op2 = valordelacuota2Op2.replace(",", "");
 
   // Acá se calcula el valor actual de la suma de las cuotas//
-  let valoractualresult2op2 = 0;
-  const valoractualDeCadaCuotaop2 = [];
-  const numeroDeCadaCuotaop2 = [];
 
-  if (cantidaddecuotasOp2 != 0) {
-    for (let i = 0; i < cantidaddecuotasOp2; i += 1) {
-      valoractualresultop2 = valordelacuota4Op2 / Math.pow(1 + rate2, i + 1);
-      valoractualresult2op2 += valoractualresultop2;
-      valoractualDeCadaCuotaop2.push(valoractualresult2op2);
-      numeroDeCadaCuotaop2.push("Cuota Nº " + (i + 1));
-    }
-  } else {
-    valoractualresultop2 = valordelacuota4Op2;
-    valoractualresult2op2 = valordelacuota4Op2;
-    valoractualDeCadaCuotaop2.push(valoractualresult2op2);
-    numeroDeCadaCuotaop2.push("Cuota Nº 0");
-  }
-  const arr1Op2 = numeroDeCadaCuotaop2;
-  const arr2Op2 = valoractualDeCadaCuotaop2;
-
-  const objOp2 = {};
-
-  arr1Op2.forEach((element, index) => {
-    objOp2[element] = arr1Op2[index];
-  });
-
-  actualValueResultOp2 = document.createElement("span");
-  actualValueResultOp2.setAttribute("id", "actualValueResultOp2");
-  actualValuesResults.appendChild(actualValueResultOp2);
-  actualValueResultOp2.textContent = "El valor actual de la opción 2 es: ";
-  actualValue$ResultOp2 = document.createElement("span");
-  actualValueResultOp2.appendChild(actualValue$ResultOp2);
-  actualValue$ResultOp2.textContent =
-    formatter.format(valoractualresult2op2) + ".";
-
-  firstResultMessage = document.createElement("span");
-  firstResultMessage.setAttribute("id", "mensajederesultado3");
-  document.getElementById("resultados").appendChild(firstResultMessage);
-
-  // CONDICIONALES
-  if (valoractualresult2op2 > valoractualresult2) {
-    firstResultMessage.textContent =
-      "Te conviene la primera opción de financiación: pagar tu compra en " +
-      cantidaddecuotas +
-      " cuotas de " +
-      valordelacuota +
-      " cada una.";
-  }
-  if (valoractualresult2op2 < valoractualresult2) {
-    firstResultMessage.textContent =
-      "Te conviene la segunda opción de financiación: pagar tu compra en " +
-      cantidaddecuotasOp2 +
-      " cuotas de " +
-      valordelacuotaOp2 +
-      " cada una.";
-  }
-  let myString = JSON.stringify(obj);
-
-  // Obtener una referencia al elemento canvas del DOM
-
-  chartCard = document.createElement("span");
-  chartCard.setAttribute("id", "chartCard");
-  document.querySelector("#resultados").appendChild(chartCard);
-
-  titleChart = document.createElement("span");
-  titleChart.setAttribute("id", "title_grafica");
-  document.querySelector("#chartCard").appendChild(titleChart);
-  titleChart.textContent =
-    "Valor actual de cada cuota de la primera opción (Es el valor de cada cuota como si la pagaras hoy)";
-
-  chart = document.createElement("canvas");
-  chart.setAttribute("id", "grafica");
-  document.querySelector("#chartCard").appendChild(chart);
-
-  const $grafica = chart;
-  // Las etiquetas son las que van en el eje X.
-
-  const etiquetas = arr1;
-  const datosVentas2020 = {
-    label: "Valor actual",
-    data: arr2, // La data es un arreglo que debe tener la misma cantidad de valores que la cantidad de etiquetas
-    backgroundColor: "rgba(54, 162, 235, 0.2)", // Color de fondo
-    borderColor: "rgba(54, 162, 235, 1)", // Color del borde
-    borderWidth: 0, // Ancho del borde
-  };
-  new Chart($grafica, {
-    type: "bar", // Tipo de gráfica
-    data: {
-      labels: etiquetas,
-      datasets: [
-        datosVentas2020,
-        // Aquí más datos...
-      ],
-    },
-    options: {
-      scales: {
-        yAxes: [
-          {
-            ticks: {
-              beginAtZero: true,
-            },
-          },
-        ],
-      },
-    },
-  });
 // QUERY STRING
 const query = new URLSearchParams({
   cuotasOp1: cantidaddecuotas, 
@@ -403,12 +225,12 @@ const queryString = query.toString();
 
 console.log(queryString);
 
-const url = 'http://127.0.0.1:5500/resultado.html?' + queryString
+const url = window.location.href + '/resultado.html?' + queryString
 
 window.location.href = url;
 
-
 }
+
 
 //Estas funciones las obtuve de Stackoverflow y sirven para aplicar el formato de $$ en los inputs del form
 
