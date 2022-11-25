@@ -16,7 +16,7 @@ $uxg-spacing-5: 48px;
 $uxg-spacing-6: 96px;
 
 $box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.11), 0px 3px 14px rgba(0, 0, 0, 0.09), 0px 5px 5px rgba(0, 0, 0, 0.16);
-
+$font-family: 'Inter', sans-serif;
 $color-background-1: #F5F4F8;
 
 
@@ -37,6 +37,7 @@ $color-secondary-2-16: rgba(237, 139, 0, 0.16);
 
 
 $color-font: rgba(0, 0, 0, 0.75);
+$color-font2: #C7C8CA;
 
 
 $color-button-chip-op1-border: rgba(0, 156, 189, 1); 
@@ -45,10 +46,11 @@ $color-button-chip-op1-selected: rgba(0, 156, 189, 0.16);
 
 $color-button-chip-op2-border: rgba(237, 139, 0, 1); 
 $color-button-chip-op2: rgba(237, 139, 0, 0.04);
-$color-button-chip-op2-selected:  rgba(255, 7, 7, 0.999);
+$color-button-chip-op2-selected:  rgba(237, 139, 0, 0.16);
  
 
 $color-button-unselected: #FFFFFF;
+$color-fields-background: rgba(105, 78, 214, 0.08);
 
 
 

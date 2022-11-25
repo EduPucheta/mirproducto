@@ -367,7 +367,7 @@ function PV() {
     data: arr2, // La data es un arreglo que debe tener la misma cantidad de valores que la cantidad de etiquetas
     backgroundColor: "rgba(54, 162, 235, 0.2)", // Color de fondo
     borderColor: "rgba(54, 162, 235, 1)", // Color del borde
-    borderWidth: 1, // Ancho del borde
+    borderWidth: 0, // Ancho del borde
   };
   new Chart($grafica, {
     type: "bar", // Tipo de gráfica
@@ -390,6 +390,24 @@ function PV() {
       },
     },
   });
+// QUERY STRING
+const query = new URLSearchParams({
+  cuotasOp1: cantidaddecuotas, 
+  valOp1: valordelacuota4,
+  cuotasOp2: cantidaddecuotasOp2,
+  valOp2: valordelacuota4Op2,
+  inf: anualInflation,
+}); 
+
+const queryString = query.toString(); 
+
+console.log(queryString);
+
+const url = 'http://127.0.0.1:5500/resultado.html?' + queryString
+
+window.location.href = url;
+
+
 }
 
 //Estas funciones las obtuve de Stackoverflow y sirven para aplicar el formato de $$ en los inputs del form
@@ -482,3 +500,5 @@ let formatter = new Intl.NumberFormat("en-US", {
   //minimumFractionDigits: 0, // (this suffices for whole numbers, but will print 2500.10 as $2,500.1)
   //maximumFractionDigits: 0, // (causes 2500.99 to be printed as $2,501)
 });
+
+
