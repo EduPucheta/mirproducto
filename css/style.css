@@ -108,12 +108,15 @@ html body nav {
   height: 75px;
 }
 html body nav img {
+  margin-top: 10px;
+  margin-left: 5%;
   width: 210px;
   height: 50px;
 }
 @media (min-width: 1025px) {
   html body nav img {
     margin-left: 200px;
+    margin-top: 16px;
   }
 }
 html body nav #myBtn {
@@ -138,8 +141,8 @@ html body nav #myBtn:hover {
 }
 @media (max-width: 1025px) {
   html body nav #myBtn {
-    margin-top: 8px;
-    margin-right: 8px;
+    margin-top: 16px;
+    margin-right: 5%;
     max-width: 90px;
     overflow-wrap: break-word;
     word-wrap: break-word;

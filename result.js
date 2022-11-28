@@ -171,7 +171,7 @@ function myFunction2(e) {
     }
     let myString = JSON.stringify(obj);
   
-    // Obtener una referencia al elemento canvas del DOM
+    // CHART 1
   
     chartCard = document.createElement("span");
     chartCard.setAttribute("id", "chartCard");
@@ -181,21 +181,23 @@ function myFunction2(e) {
     titleChart.setAttribute("id", "title_grafica");
     document.querySelector("#chartCard").appendChild(titleChart);
     titleChart.textContent =
-      "Valor actual de cada cuota de la primera opción (Es el valor de cada cuota como si la pagaras hoy)";
+      "Cuotas ajustadas al valor de hoy de la primera opción de financiación";
   
     chart = document.createElement("canvas");
     chart.setAttribute("id", "grafica");
     document.querySelector("#chartCard").appendChild(chart);
   
+      
+
     const $grafica = chart;
     // Las etiquetas son las que van en el eje X.
   
     const etiquetas = arr1;
     const datosVentas2020 = {
-      label: "Valor actual",
+      label: "Cuota al valor de hoy",
       data: arr2, // La data es un arreglo que debe tener la misma cantidad de valores que la cantidad de etiquetas
-      backgroundColor: "rgba(54, 162, 235, 0.2)", // Color de fondo
-      borderColor: "rgba(54, 162, 235, 1)", // Color del borde
+      backgroundColor: "rgba(0, 156, 189, 1)", // Color de fondo
+      borderColor: "rgba(0, 156, 189, 1)", // Color del borde
       borderWidth: 0, // Ancho del borde
     };
     new Chart($grafica, {
@@ -204,6 +206,59 @@ function myFunction2(e) {
         labels: etiquetas,
         datasets: [
           datosVentas2020,
+          // Aquí más datos...
+        ],
+      },
+      options: {
+        
+        scales: {
+          yAxes: [
+            {
+              ticks: {
+                beginAtZero: true,
+              },
+            },
+          ],
+        },
+      },
+    });
+    
+    // CHART 2
+  
+    chartCard2 = document.createElement("span");
+    chartCard2.setAttribute("id", "chartCard2");
+    document.querySelector("#resultados").appendChild(chartCard2);
+  
+    titleChart2 = document.createElement("span");
+    titleChart2.setAttribute("id", "title_grafica2");
+    document.querySelector("#chartCard2").appendChild(titleChart2);
+    titleChart2.textContent =
+    "Cuotas ajustadas al valor de hoy de la segunda opción de financiación";
+  
+  
+    chart2 = document.createElement("canvas");
+    chart2.setAttribute("id", "grafica2");
+    document.querySelector("#chartCard2").appendChild(chart2);
+  
+      
+
+    const $grafica2 = chart2;
+    // Las etiquetas son las que van en el eje X.
+  
+    const etiquetas2 = arr1Op2;
+    const datosVentas20202 = {
+      label: "Cuota al valor de hoy",
+      data: arr2Op2, // La data es un arreglo que debe tener la misma cantidad de valores que la cantidad de etiquetas
+      backgroundColor: "rgba(237, 139, 0, 1)", // Color de fondo
+      borderColor: "rgba(0, 156, 189, 1)", // Color del borde
+      borderWidth: 0, // Ancho del borde
+    };
+    new Chart($grafica2, {
+      type: "bar", // Tipo de gráfica
+      data: {
+        labels: etiquetas2,
+        datasets: [
+          datosVentas20202,
           // Aquí más datos...
         ],
       },

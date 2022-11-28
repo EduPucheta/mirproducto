@@ -232,6 +232,11 @@ window.location.href = url;
 }
 
 
+
+
+
+
+
 //Estas funciones las obtuve de Stackoverflow y sirven para aplicar el formato de $$ en los inputs del form
 
 // Jquery Dependency
