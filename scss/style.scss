@@ -1,9 +1,3 @@
-/* 
-npm init
-sass --watch scss/style.scss css/style.css 
-*/
-
-@import "form_elements.scss";
 @import "variables.scss";
 @import "modal.scss";
 
@@ -16,11 +10,9 @@ html {
   min-height: 100%;
   body {
     max-height: 70%;
-    color: $color-font;
     font-family: $font-family;
     font-style: normal;
-    background-color: $color-primary-0;
-    background-image: linear-gradient(160deg, $color-dark-primary-0 0%, #f04e98 100%);
+    background-image: linear-gradient(160deg, $color-dark-primary-0 0%, $color-primary-1 100%);
     nav {
       height: 75px;
       img {
@@ -99,15 +91,26 @@ html {
       margin-top: $uxg-spacing-2 ;
       margin-bottom: $uxg-spacing-2;
       font-weight: 900;
-      font-size: 18px;
-      //line-height: 24px;
+      font-size: 18px; 
       text-align: center;
+      color: $color-font;
+      text-decoration-line: underline ;
+      text-shadow:
+      1.5px 1.5px $color-background-1,
+      1.5px -1.5px $color-background-1,
+      -1.5px 1.5px $color-background-1,
+      -1.5px -1.5px $color-background-1 ;
+      text-decoration-thickness: 4px;
+      line-height: 0.85;
+      //line-height: 24px;
+      //text-align: center; 
     }
     .cuotas__app__option1__title{
-      color: $color-font; 
+      text-decoration-color: $color-secondary-1;
     }
     .cuotas__app__option2__title{ 
-      color: $color-font; 
+
+      text-decoration-color: $color-secondary-2;
     }
     .modal-content {
       max-width: 600px;
@@ -174,7 +177,52 @@ html {
         flex-direction: column;
         font-style: normal;
         font-weight: 800;
-
+        .input{
+          text-align: left;
+        /* Button */
+        box-sizing: border-box;
+        /* Auto layout */
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding: 12px 16px;
+        gap: 10px;
+        color: black;
+        width: 100%;
+        height: 44px;
+        /* Grey/Grey-100 */
+        background: #F2F2F2;
+        /* Grey/Grey-200 */
+        border: 2px solid #E6E6E6;
+        border-radius: 10px;
+        /* Inside auto layout */
+        flex: none;
+        order: 1;
+        align-self: stretch;
+        flex-grow: 0;
+        &:active{
+          /* Frame 1 */
+        /* Auto layout */
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        /* Inside auto layout */
+        flex: none;
+        order: 0;
+        flex-grow: 1;
+        }
+        &:invalid{
+        border: 2px solid #CC3535;
+        /* Alert-Shadow */
+        box-shadow: 0px 0px 0px 3px #FAEBEB;
+        border-radius: 10px;
+        /* Inside auto layout */
+        flex: none;
+        order: 1;
+        align-self: stretch;
+        flex-grow: 0;
+        }
+          }
         #chip__cuotas1 {
           display: flex;
           flex-wrap: wrap;
@@ -189,7 +237,7 @@ html {
             margin-bottom: 5px;
             box-shadow: none;
             max-height: 37px;
-            width: 90px;
+            width: 86px;
             font-size: small;
             padding: 10px;
             transition-duration: 0.3s;
@@ -232,7 +280,7 @@ html {
             margin-bottom: 5px;
             box-shadow: none;
             max-height: 37px;
-            width: 90px;
+            width: 86px; 
             font-size: small;
             padding: 10px;
             transition-duration: 0.3s;
@@ -319,6 +367,7 @@ html {
 
 
         #submitbutton {
+          font-weight: 700;
           box-sizing: border-box;
           /* Auto layout */
           display: flex;
@@ -332,7 +381,7 @@ html {
           left: 16px;
           top: 16px;
           /* Primary */
-          background: $color-primary-0;
+          background: $color-dark-primary-0;
           /* Primary */
           border: none;
           border-radius: 24px;
@@ -370,7 +419,11 @@ html {
   flex-direction: column;
   #mensajederesultado3 {
     //order: 1;
-    order: -1;
+    order: -3;
+  }
+  #table {
+    //order: 1;
+    order: -2;
   }
 }
 
@@ -404,5 +457,40 @@ html {
   }
 }
 
+.results__page{
+  #table {
+    display: block;
+    margin-top: $uxg-spacing-2;
+    th, td {
+      padding: 5px;
+  }
+}
 
 
+.startover { 
+  margin-top: $uxg-spacing-2;
+  margin-bottom: $uxg-spacing-2;
+  margin-right: auto;
+  margin-left: auto;
+  display: grid;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 12px 24px;
+  height: 44px;
+  background: $color-dark-primary-0;
+  border: none;
+  border-radius: 24px;
+  color: white;
+  cursor: pointer;
+  font-weight: 700;
+  transition: $transition-speed;
+  &:hover {
+    background-color: $color-primary-1;
+    color: white;
+  }
+  a{
+    text-decoration: none;
+    color: white;
+  }
+}
+}

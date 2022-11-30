@@ -23,7 +23,8 @@ console.log(
 function myFunction2(e) {
     g = document.createElement("div");
     g.setAttribute("id", "resultados");
-    document.querySelector("body").appendChild(g);
+    document.querySelector(".results__page").prepend(g);
+    //document.querySelector("body").appendChild(g);
     document.querySelector("#resultados").style.display = "flex";
   
     // OPCIÓN 1
@@ -45,6 +46,10 @@ function myFunction2(e) {
       formatter.format(
         parseFloat(valordelacuota4) * parseFloat(cantidaddecuotas)
       ) + ".";
+      paymentsSum$Op1txt=
+      formatter.format(
+        parseFloat(valordelacuota4) * parseFloat(cantidaddecuotas)
+      ) ;
   
   
     paymentsSumOp2 = document.createElement("span");
@@ -58,6 +63,9 @@ function myFunction2(e) {
       formatter.format(
         parseFloat(valordelacuota4Op2) * parseFloat(cantidaddecuotasOp2)
       ) + ".";
+      paymentsSum$Op2txt= formatter.format(
+        parseFloat(valordelacuota4Op2) * parseFloat(cantidaddecuotasOp2)
+      );
     PV2();
   }
   
@@ -107,6 +115,7 @@ function myFunction2(e) {
     actualValue$Result = document.createElement("span");
     actualValueResult.appendChild(actualValue$Result);
     actualValue$Result.textContent = formatter.format(valoractualresult2) + ". ";
+    actualValue$Resulttxt = formatter.format(valoractualresult2) + ". ";
     actualValuesResults.appendChild(document.createElement("br"));
   
     // OPCION 2
@@ -147,6 +156,9 @@ function myFunction2(e) {
     actualValueResultOp2.appendChild(actualValue$ResultOp2);
     actualValue$ResultOp2.textContent =
       formatter.format(valoractualresult2op2) + ".";
+  
+      actualValue$ResultOp2txt =
+      formatter.format(valoractualresult2op2)
   
     firstResultMessage = document.createElement("span");
     firstResultMessage.setAttribute("id", "mensajederesultado3");
@@ -274,7 +286,54 @@ function myFunction2(e) {
         },
       },
     });
+
+    // Tabla
+
+    myTable = document.createElement("span");
+    myTable.setAttribute("id", "table");
+    document.querySelector("#resultados").appendChild(myTable);
+    
+    
+    let employees = [
+        {cant: 'Cantidad de cuotas', Cantidaddecuotas: cantidaddecuotas, Cantidaddecuot: cantidaddecuotasOp2 },
+        {val: "Valor actual de las cuotas", val1: actualValue$Resulttxt, val2: actualValue$ResultOp2txt },
+        {val: "Suma total de las cuotas", sum1: paymentsSum$Op1txt, sum2: paymentsSum$Op2txt}
+    ]
+    
+    let headers = ['','Opción 1', 'Opción 2'];
+    
+        let table = document.createElement('table');
+        let headerRow = document.createElement('tr');
+    
+        headers.forEach(headerText => {
+            let header = document.createElement('th');
+            let textNode = document.createTextNode(headerText);
+            header.appendChild(textNode);
+            headerRow.appendChild(header);
+        });
+    
+        table.appendChild(headerRow);
+    
+        employees.forEach(emp => {
+            let row = document.createElement('tr');
+    
+            Object.values(emp).forEach(text => {
+                let cell = document.createElement('td');
+                let textNode = document.createTextNode(text);
+                cell.appendChild(textNode);
+                row.appendChild(cell);
+            })
+    
+            table.appendChild(row);
+        });
+    
+        myTable.appendChild(table);
+    ; 
 } 
   
+
+
+
+
 myFunction2();
 
