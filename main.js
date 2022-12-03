@@ -1,5 +1,53 @@
-// INFLACIÓN MENSUAL
+// FETCH 
+function leerApi() {
+  console.log('Llamando a la API del BCRA, espere un cachito');
+
+  $.ajax({
+      url: 'https://api.estadisticasbcra.com/inflacion_mensual_oficial',
+      type: 'GET',
+      data:{d: "2021-12-31"},
+      // con la propiedad beforeSend le paso el tipo de autorizacion, en este caso será 'Bearer'  y luego el token que registré en el BCRA
+      beforeSend: function (xhr) {
+          xhr.setRequestHeader('Authorization', 'Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MDA2OTczNDAsInR5cGUiOiJleHRlcm5hbCIsInVzZXIiOiJlZHVncHVjaGV0YUBnbWFpbC5jb20ifQ.GNFMIUdrWFZAwBIQ4YNDjjEehOlyVn-AiGWtUr-5mXBiuhb_jqMmMyed6qu8Ksi3mUZHA336pL1Ljb5U6OlTtg');
+      },
+
+      // si la conexion es exitosa, ejecutará la función "respuesta", definida allí mismo.
+      success: function (respuesta) {
+
+          // imprimo el valor de respuesta en la consola, para debug.
+          console.log(respuesta);
+
+          // creo una variable "listaAPI y le asigno el DIV que definí arriba, con el "id:lista-api".
+          var listaAPI = $("#lista-api");
+
+          $.each(respuesta, function (index, miembro) {
+              listaAPI.append(
+                  '<div>' +
+                  '<p>' + 'Fecha Cotizacion: ' + miembro.d + '<br>' +
+                  'Importe: $ ' + miembro.v + '<br>' +
+                  '<br>' + '______________________________________' +
+                  '</div>'
+              );
+          });
+      }, //fin function respuesta
+
+      error: function () {
+          console.log("Error al leer la API");
+      }
+
+  });
+}
+
+leerApi() 
+  
 let rate = 6.2;
+
+
+
+
+
+
+
 
 // MODAL DE BIENVENIDA EN PRIMERA SESIÓN
 
