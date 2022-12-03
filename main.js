@@ -3,7 +3,7 @@ function leerApi() {
   console.log('Llamando a la API del BCRA, espere un cachito');
 
   $.ajax({
-      url: 'https://api.estadisticasbcra.com/inflacion_mensual_oficial',
+      url: 'https://api.estadisticasbcra.com/usd_of',
       type: 'GET',
       data:{d: "2021-12-31"},
       // con la propiedad beforeSend le paso el tipo de autorizacion, en este caso será 'Bearer'  y luego el token que registré en el BCRA
