@@ -1,53 +1,20 @@
-// FETCH 
-function leerApi() {
-  console.log('Llamando a la API del BCRA, espere un cachito');
+// Fecth inflación desde JSON
+let url = "datos.json";
 
-  $.ajax({
-      url: 'https://api.estadisticasbcra.com/usd_of',
-      type: 'GET',
-      data:{d: "2021-12-31"},
-      // con la propiedad beforeSend le paso el tipo de autorizacion, en este caso será 'Bearer'  y luego el token que registré en el BCRA
-      beforeSend: function (xhr) {
-          xhr.setRequestHeader('Authorization', 'Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MDA2OTczNDAsInR5cGUiOiJleHRlcm5hbCIsInVzZXIiOiJlZHVncHVjaGV0YUBnbWFpbC5jb20ifQ.GNFMIUdrWFZAwBIQ4YNDjjEehOlyVn-AiGWtUr-5mXBiuhb_jqMmMyed6qu8Ksi3mUZHA336pL1Ljb5U6OlTtg');
-      },
-
-      // si la conexion es exitosa, ejecutará la función "respuesta", definida allí mismo.
-      success: function (respuesta) {
-
-          // imprimo el valor de respuesta en la consola, para debug.
-          console.log(respuesta);
-
-          // creo una variable "listaAPI y le asigno el DIV que definí arriba, con el "id:lista-api".
-          var listaAPI = $("#lista-api");
-
-          $.each(respuesta, function (index, miembro) {
-              listaAPI.append(
-                  '<div>' +
-                  '<p>' + 'Fecha Cotizacion: ' + miembro.d + '<br>' +
-                  'Importe: $ ' + miembro.v + '<br>' +
-                  '<br>' + '______________________________________' +
-                  '</div>'
-              );
-          });
-      }, //fin function respuesta
-
-      error: function () {
-          console.log("Error al leer la API");
-      }
-
+const fetchJson = fetch(url)
+  .then((response) => response.json())
+  .then((response) => {
+    return response.inflacionAnual;
+  })
+  .catch((error) => {
+    console.log("error fetch");
   });
-}
+const updateInflationFetch = async () => {
+  let rate = await fetchJson;
+  document.querySelector("#inflacion__number").value = rate;
+};
 
-leerApi() 
-  
-let rate = 6.2;
-
-
-
-
-
-
-
+updateInflationFetch();
 
 // MODAL DE BIENVENIDA EN PRIMERA SESIÓN
 
@@ -120,6 +87,7 @@ document.querySelectorAll(".cuotas").forEach(function (i) {
     ) {
       document.getElementById("cantidaddecuotas").style.display = "none";
       document.getElementById("cantidaddecuotas").value = null;
+      document.querySelector("#cantidaddecuotas").classList.remove("selected");
     }
   });
 });
@@ -173,17 +141,149 @@ function showoptions4() {
 
 function showoptions2() {
   let x = document.getElementById("advanced__options");
-  if (x.style.display === "flex") {
+  if (x.style.display === "inline") {
     x.style.display = "none";
   } else {
-    x.style.display = "flex";
+    x.style.display = "inline";
+  }
+}
+
+// FORM VALIDATION
+
+function checkInputs() {
+  const valordelacuotaComp = document.querySelector("#valordelacuota");
+  const valordelacuotaComp2 = document.querySelector("#valordelacuota2");
+  const inflacion = document.querySelector("#inflacion__number");
+  const impuestos = document.querySelector("#impuestoAlSello__number");
+  const chips1 = document.querySelector("#chip__cuotas1");
+  const chips2 = document.querySelector("#chip__cuotas2");
+
+  const valordelacuotaCompInput = valordelacuotaComp.value.trim();
+  const valordelacuotaCompInput2 = valordelacuotaComp2.value.trim();
+
+
+  if (valordelacuotaCompInput === "") {
+    setErrorFor(
+      valordelacuotaComp,
+      "Ingresá el valor de la cuota de la primera opción"
+    )
+  } else {
+    setSuccessFor(valordelacuotaComp);
+  }
+
+  if (valordelacuotaCompInput2 === "") {
+    setErrorFor(
+      valordelacuotaComp2,
+      "Ingresá el valor de la cuota de la segunda opción"
+    );
+  } else {
+    setSuccessFor(valordelacuotaComp2);
+  }
+  const inflacionInput = inflacion.value.trim();
+  if (inflacionInput === "") {
+    setErrorFor(inflacion, "Ingresá el valor de la inflación anual estimada");
+  } else {
+    setSuccessFor(inflacion);
+  }
+  const impuestosInput = impuestos.value.trim();
+  if (impuestosInput === "") {
+    setErrorFor(
+      impuestos,
+      "Ingresá el valor del impuesto por pago con tarjeta, si querés no incluirlo podés Ingresá 0%"
+    );
+  } else {
+    setSuccessFor(impuestos);
+  }
+
+// Chips
+
+  if (chips1.contains(chips1.querySelector(".selected")) === false) {
+    setErrorFor(
+      chips1,
+      "Elegí la cantidad de cuotas de la primera opción de financiación"
+    );
+  } else {
+    setSuccessFor(chips1.parentElement); 
+  }
+  if (
+    document.querySelector("#cantidaddecuotas").style.display == "flex" &&
+    document.querySelector("#cantidaddecuotas").value == ""
+  ) {
+    setErrorFor(
+      chips1,
+      "Elegí la cantidad de cuotas de la primera opción de financiación!" 
+    );
+  } else {
+    setSuccessFor(chips1.parentElement);
+  }
+  if (chips2.contains(chips2.querySelector(".selected2")) === false) {
+    setErrorFor(
+      chips2,
+      "Elegí la cantidad de cuotas de la segunda opción de financiación"
+    );
+  } else {
+    setSuccessFor(chips2.parentElement);
+  }
+  if (
+    document.querySelector("#cantidaddecuotas2").style.display == "flex" &&
+    document.querySelector("#cantidaddecuotas2").value == ""
+  ) {
+    setErrorFor(
+      chips2,
+      "Elegí la cantidad de cuotas de la segunda opción de financiación!" 
+    );
+  } else {
+    setSuccessFor(chips2.parentElement);
+  }
+  /*     if((document.querySelector("#cantidaddecuotas").style.display=="flex" && document.querySelector("#cantidaddecuotas").value == "") ) {
+      setErrorFor(chips1, 'Elegí la cantidad de cuotas de la primera opción de financiación.'); 
+  } else {
+    setSuccessFor(chips1.parentElement);
+  } */
+  //&& (document.querySelector("#cantidaddecuotas").contains(document.querySelector("#cantidaddecuotas").querySelector(".selected")===false)) ||
+
+  // Si no hay errores aca se ejecuta la función.
+  if (document.querySelectorAll(".error__message").length == 0) {
+    myFunction();
+  }
+}
+
+function setErrorFor(input, message) {
+  //const formControl = input.parentElement;
+  if (
+    input.parentElement.contains(
+      input.parentElement.querySelector(".error__message")
+    ) === false
+  ) {
+    console.log(message)
+    errorMessageComp = document.createElement("div");
+    errorMessageComp.className = "error__message";
+    input.parentElement.appendChild(errorMessageComp);
+    errorMessageComp.innerText = message; 
+    if (
+      input.id === "inflacion__number" ||
+      input.id === "impuestoAlSello__number"
+    ) {
+      let x = document.getElementById("advanced__options");
+      x.style.display = "inline";
+    }
+  }
+}
+
+function setSuccessFor(input) {
+  if (
+    input.parentElement.contains(
+      input.parentElement.querySelector(".error__message") 
+    )
+  ) {
+    console.log(input)
+    input.parentElement.querySelector(".error__message").remove();
   }
 }
 
 // VALOR TOTAL EN CONTADO
 
 function myFunction(e) {
-
   // OPCIÓN 1
   if (
     document.querySelector(".selected").hasAttribute("data-test") &&
@@ -201,7 +301,6 @@ function myFunction(e) {
   const valordelacuota = document.getElementById("valordelacuota").value;
   const valordelacuota2 = valordelacuota.replace("$", "");
   const valordelacuota4 = valordelacuota2.replace(",", "");
-  
 
   // OPCIÓN 2
   if (
@@ -229,6 +328,8 @@ function myFunction(e) {
 // VALOR ACTUAL DE LAS CUOTAS
 
 function PV() {
+  anualInflation = document.querySelector("#inflacion__number").value;
+  impuestoAlsello = document.querySelector("#impuestoAlSello__number").value;
   // OPCION 1
   //Aquí se elije el valor de la cantidad de cuotas seleccionadas. si tiene el atributo data elige los botones si no el valor custom
   if (document.querySelector(".selected").hasAttribute("data-test")) {
@@ -241,7 +342,6 @@ function PV() {
   const valordelacuota = document.getElementById("valordelacuota").value;
   const valordelacuota2 = valordelacuota.replace("$", "");
   const valordelacuota4 = valordelacuota2.replace(",", "");
-  anualInflation = document.querySelector("#inflacion__number").value;
   // Cálculo de la tasa efectiva mensual a partir de la anual
 
   // OPCION 2
@@ -260,30 +360,24 @@ function PV() {
 
   // Acá se calcula el valor actual de la suma de las cuotas//
 
-// QUERY STRING
-const query = new URLSearchParams({
-  cuotasOp1: cantidaddecuotas, 
-  valOp1: valordelacuota4,
-  cuotasOp2: cantidaddecuotasOp2,
-  valOp2: valordelacuota4Op2,
-  inf: anualInflation,
-}); 
+  // QUERY STRING
+  const query = new URLSearchParams({
+    cuotasOp1: cantidaddecuotas,
+    valOp1: valordelacuota4,
+    cuotasOp2: cantidaddecuotasOp2,
+    valOp2: valordelacuota4Op2,
+    inf: anualInflation,
+    impsell: impuestoAlsello,
+  });
 
-const queryString = query.toString(); 
+  const queryString = query.toString();
 
-console.log(queryString);
+  console.log(queryString);
 
-const url = window.location.href + '/resultado.html?' + queryString
+  const url = "/resultado.html?" + queryString;
 
-window.location.href = url;
-
+  window.location.href = url;
 }
-
-
-
-
-
-
 
 //Estas funciones las obtuve de Stackoverflow y sirven para aplicar el formato de $$ en los inputs del form
 
@@ -375,5 +469,3 @@ let formatter = new Intl.NumberFormat("en-US", {
   //minimumFractionDigits: 0, // (this suffices for whole numbers, but will print 2500.10 as $2,500.1)
   //maximumFractionDigits: 0, // (causes 2500.99 to be printed as $2,501)
 });
-
-

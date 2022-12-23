@@ -9,17 +9,26 @@
 html {
   min-height: 100%;
   body {
-    max-height: 70%;
     font-family: $font-family;
-    font-style: normal;
-    background-image: linear-gradient(160deg, $color-dark-primary-0 0%, $color-primary-1 100%);
+    background-color: $color-primary-1;
+    .background {
+      background-image: linear-gradient(
+        180deg,
+        $color-dark-primary-0 0%,
+        $color-dark-primary-0 5%,
+        $color-primary-1 50%
+      );
+      min-height: 900px;
+    }
     nav {
-      height: 75px;
+      height: 48px;
+      @media (min-width: 1025px) {
+        height: 64px;
+      }
       img {
         margin-top: 10px;
-        margin-left: 5%; 
-        width: 210px;
-        height: 50px;
+        margin-left: 5%;
+        width: 200px;
         @media (min-width: 1025px) {
           margin-left: 200px;
           margin-top: $uxg-spacing-3;
@@ -27,31 +36,31 @@ html {
       }
       #myBtn {
         border: 1px solid $color-primary-1;
-        border-radius: 18px;
+        border-radius: $radius-buttons;
         color: white;
         font-style: normal;
-        font-weight: 600;
         font-size: 14px;
         line-height: 20px;
         background: none;
-        padding: 10px;
+        padding: 5px;
         float: right;
         margin-top: 25px;
         margin-right: 250px;
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-        transition: $transition-speed; 
-        &:hover{
+        transition: $transition-speed;
+        cursor: pointer;
+        &:hover {
           background-color: $color-primary-1;
           color: white;
         }
         @media (max-width: 1025px) {
-          margin-top: $uxg-spacing-3;
+          margin-top: $uxg-spacing-2;
           margin-right: 5%;
-          max-width: 90px;
+          max-width: 100px;
           overflow-wrap: break-word;
           word-wrap: break-word;
           word-break: break-word;
-          height: 60px;
+          height: 48px;
         }
       }
     }
@@ -59,7 +68,6 @@ html {
       margin-left: 5%;
       margin-right: 5%;
       margin-top: $uxg-spacing-3;
-      margin-bottom: $uxg-spacing-3;
       color: white;
       font-style: normal;
       font-weight: 400;
@@ -71,7 +79,7 @@ html {
         margin-right: 25%;
       }
     }
-    .description{
+    .description {
       margin-left: 5%;
       margin-right: 5%;
       margin-top: $uxg-spacing-3;
@@ -88,39 +96,34 @@ html {
       }
     }
     h2 {
-      margin-top: $uxg-spacing-2 ;
-      margin-bottom: $uxg-spacing-2;
-      font-weight: 900;
-      font-size: 18px; 
-      text-align: center;
-      color: $color-font;
-      text-decoration-line: underline ;
-      text-shadow:
-      1.5px 1.5px $color-background-1,
-      1.5px -1.5px $color-background-1,
-      -1.5px 1.5px $color-background-1,
-      -1.5px -1.5px $color-background-1 ;
+      margin-top: $uxg-spacing-3;
+      margin-bottom: $uxg-spacing-3;
+      font-size: 18px;
+      text-decoration-line: underline;
+      text-decoration-style: "solid";
       text-decoration-thickness: 4px;
-      line-height: 0.85;
-      //line-height: 24px;
-      //text-align: center; 
+      text-decoration-skip-ink: none ;
+      text-align: center;
     }
-    .cuotas__app__option1__title{
+    .cuotas__app__option1__title {
       text-decoration-color: $color-secondary-1;
     }
-    .cuotas__app__option2__title{ 
-
+    .cuotas__app__option2__title {
       text-decoration-color: $color-secondary-2;
+
     }
     .modal-content {
       max-width: 600px;
+      border-radius: $radius-cards;
       .modal-content__title {
         font-size: larger;
         margin-bottom: $uxg-spacing-4;
       }
       .modal-content__start__button {
+        font-size: medium;
+        text-decoration: none;
         margin-top: $uxg-spacing-4;
-        background-color: $color-primary-0;
+        background-color: $color-dark-primary-0;
         color: white;
         box-sizing: border-box;
         /* Auto layout */
@@ -136,15 +139,15 @@ html {
         top: 16px;
         /* Primary */
         border: none;
-        border-radius:  100px;
+        border-radius: $radius-buttons;
         cursor: pointer;
         transition: 0.3s;
         &:hover {
-          background-color: $color-primary-1; 
+          background-color: $color-primary-1;
           color: white;
         }
       }
-      p{
+      p {
         margin-top: $uxg-spacing-2;
         margin-left: $uxg-spacing-2;
         margin-right: $uxg-spacing-2;
@@ -154,9 +157,10 @@ html {
     .cuotas__app {
       margin-left: 5%;
       margin-right: 5%;
+      margin-bottom: $uxg-spacing-5;
       background-color: #f1f1fa;
       padding: 5%;
-      border-radius: 7px;
+      border-radius: $radius-cards;
       box-shadow: $box-shadow;
       @media (min-width: 1025px) {
         /* big landscape tablets, laptops, and desktops */
@@ -166,10 +170,8 @@ html {
         margin-right: 25%;
         padding: 5%;
         background-color: #f1f1fa;
-        border-radius: 7px;
         box-shadow: $box-shadow;
       }
-
 
       // background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(97, 186, 255, 1) 0%, rgba(166, 239, 253, 1) 90.1%);
       form {
@@ -177,58 +179,63 @@ html {
         flex-direction: column;
         font-style: normal;
         font-weight: 800;
-        .input{
+        .input {
           text-align: left;
-        /* Button */
-        box-sizing: border-box;
-        /* Auto layout */
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        padding: 12px 16px;
-        gap: 10px;
-        color: black;
-        width: 100%;
-        height: 44px;
-        /* Grey/Grey-100 */
-        background: #F2F2F2;
-        /* Grey/Grey-200 */
-        border: 2px solid #E6E6E6;
-        border-radius: 10px;
-        /* Inside auto layout */
-        flex: none;
-        order: 1;
-        align-self: stretch;
-        flex-grow: 0;
-        &:active{
-          /* Frame 1 */
-        /* Auto layout */
-        display: flex;
-        flex-direction: row;
-        align-items: flex-start;
-        /* Inside auto layout */
-        flex: none;
-        order: 0;
-        flex-grow: 1;
-        }
-        &:invalid{
-        border: 2px solid #CC3535;
-        /* Alert-Shadow */
-        box-shadow: 0px 0px 0px 3px #FAEBEB;
-        border-radius: 10px;
-        /* Inside auto layout */
-        flex: none;
-        order: 1;
-        align-self: stretch;
-        flex-grow: 0;
-        }
+          /* Button */
+          box-sizing: border-box;
+          /* Auto layout */
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          padding: 12px 16px;
+          gap: 10px;
+          color: black;
+          width: 100%;
+          height: 44px;
+          /* Grey/Grey-100 */
+          background: #f2f2f2;
+          /* Grey/Grey-200 */
+          border: 2px solid #e6e6e6;
+          border-radius: $radius-chips;
+          /* Inside auto layout */
+          flex: none;
+          order: 1;
+          align-self: stretch;
+          flex-grow: 0;
+          &:active {
+            /* Frame 1 */
+            /* Auto layout */
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            /* Inside auto layout */
+            flex: none;
+            order: 0;
+            flex-grow: 1;
           }
+          &:invalid {
+            border: 2px solid #cc3535;
+            /* Alert-Shadow */
+            box-shadow: 0px 0px 0px 3px #faebeb;
+            border-radius: $radius-chips;
+            /* Inside auto layout */
+            flex: none;
+            order: 1;
+            align-self: stretch;
+            flex-grow: 0;
+          }
+        }
         #chip__cuotas1 {
+          margin-top: $uxg-spacing-3;
+          margin-bottom: $uxg-spacing-3;
           display: flex;
           flex-wrap: wrap;
+          justify-content: space-around;
+          padding-left: $uxg-spacing-3;
+          padding-right: $uxg-spacing-3;
           input {
             border: 1px solid rgba(0, 0, 0, 0.12);
-            border-radius: 16px;
+            border-radius: $radius-chips;
             background: $color-button-unselected;
             text-align: center;
             margin-left: 5px;
@@ -241,6 +248,7 @@ html {
             font-size: small;
             padding: 10px;
             transition-duration: 0.3s;
+            cursor: pointer;
             &:hover {
               background: $color-button-chip-op1;
               border: 1px solid $color-button-chip-op1-border;
@@ -256,7 +264,7 @@ html {
             margin-top: 10px;
             border: none;
             box-shadow: none;
-            border-radius: 100px;
+            border-radius: $radius-buttons;
             max-height: 30px;
             width: 100px;
             font-size: small;
@@ -267,11 +275,18 @@ html {
           }
         }
         #chip__cuotas2 {
+          margin-left: auto;
+          margin-right: auto;
+          margin-top: $uxg-spacing-3;
+          margin-bottom: $uxg-spacing-3;
           display: flex;
           flex-wrap: wrap;
+          justify-content: space-around;
+          padding-left: $uxg-spacing-3;
+          padding-right: $uxg-spacing-3;
           input {
             border: 1px solid rgba(0, 0, 0, 0.12);
-            border-radius: 16px;
+            border-radius: $radius-chips;
             background: $color-button-unselected;
             text-align: center;
             margin-left: 5px;
@@ -280,16 +295,16 @@ html {
             margin-bottom: 5px;
             box-shadow: none;
             max-height: 37px;
-            width: 86px; 
+            width: 86px;
             font-size: small;
             padding: 10px;
             transition-duration: 0.3s;
+            cursor: pointer;
             &:hover {
               border: 1px solid $color-button-chip-op2-border;
-              border-radius: 16px;
             }
           }
-          .selected2{
+          .selected2 {
             background-color: rgba(237, 139, 0, 0.16);
             border: 1px solid rgba(237, 139, 0, 1);
           }
@@ -298,7 +313,7 @@ html {
         #cantidaddecuotas {
           display: none;
           transition-duration: 0.3s;
-          &:focus-visible{
+          &:focus-visible {
             outline-color: $color-secondary-1;
           }
         }
@@ -323,33 +338,36 @@ html {
             margin: 10px 0;
           }
         }
-        #valordelacuota{
+        #valordelacuota {
           //background-color: $color-button-chip-op1-selected ;
-          &:focus-visible{
+          &:focus-visible {
             outline-color: $color-secondary-1;
           }
         }
 
-        #valordelacuota2{
+        #valordelacuota2 {
           // background-color: $color-button-chip-op2-selected ;
-          &:focus-visible{
+          &:focus-visible {
             outline-color: $color-secondary-2;
           }
         }
 
         .advaced_options__withoptions {
+          margin-bottom: $uxg-spacing-4;
+          margin-top: $uxg-spacing-3;
           .advaced_options {
+            width: fit-content;
+            display: block;
             text-align: left;
             font-size: 12px;
             display: flex;
-            margin-bottom: $uxg-spacing-3;
             cursor: pointer;
             p {
               vertical-align: baseline;
               margin-left: 5px;
               margin-top: auto;
               margin-bottom: auto;
-              color: $color-font;              
+              color: $color-font;
             }
           }
         }
@@ -364,7 +382,6 @@ html {
             margin-left: 5px;
           }
         }
-
 
         #submitbutton {
           font-weight: 700;
@@ -383,8 +400,8 @@ html {
           /* Primary */
           background: $color-dark-primary-0;
           /* Primary */
-          border: none;
-          border-radius: 24px;
+          //border: none;
+          border-radius: $radius-buttons;
           color: white;
           cursor: pointer;
           transition: $transition-speed;
@@ -392,17 +409,12 @@ html {
             background-color: $color-primary-1;
             color: white;
           }
-          &:disabled {
-            box-sizing: border-box;
-            /* Auto layout */
-            /* Primary Dark */
-            background: #372aa3;
-            opacity: 0.4;
-            /* Primary Dark */
-            border: 2px solid $color-background-1;
-            border-radius: 10px;
-          }
         }
+      .error__message{
+        color: $color-error;
+        font-size: small;
+      }
+ 
       }
     }
   }
@@ -418,8 +430,15 @@ html {
   display: flex;
   flex-direction: column;
   #mensajederesultado3 {
+    font-weight: 700;
     //order: 1;
     order: -3;
+    .firstoption{
+      color: $color-secondary-1
+    }
+    .secondoption{
+      color: $color-secondary-2
+    }
   }
   #table {
     //order: 1;
@@ -428,14 +447,15 @@ html {
 }
 
 #resultados > * {
-  font-weight: bold;
+  font-weight: 500;
+  font-size: small;
   margin-top: $uxg-spacing-2;
   margin-bottom: $uxg-spacing-2;
   margin-left: 5%;
   margin-right: 5%;
   background-color: #f1f1fa;
   padding: 5%;
-  border-radius: 7px;
+  border-radius: $radius-cards;
   box-shadow: $box-shadow;
   @media (min-width: 1025px) {
     /* big landscape tablets, laptops, and desktops */
@@ -445,7 +465,7 @@ html {
     margin-right: 25%;
     background-color: #f1f1fa;
     padding: 5%;
-    border-radius: 7px;
+    border-radius: $radius-cards;
     box-shadow: $box-shadow;
 
     #mensajederesultado4 {
@@ -457,29 +477,52 @@ html {
   }
 }
 
-.results__page{
+.results__page {
   #table {
     display: block;
     margin-top: $uxg-spacing-2;
-    th, td {
+    table{
+      margin-bottom: $uxg-spacing-2;
+    }
+    th,
+    td {
       padding: 5px;
+    }
+    tr th:nth-of-type(2) {
+      color: $color-secondary-1;
+      text-align: end;
+    }
+    tr th:nth-of-type(3) {
+      color: $color-secondary-2;
+      text-align: end;
+    }
+    tr td:nth-of-type(2) {
+      text-align: end;
+    }
+    tr td:nth-of-type(3) {
+      text-align: end;
+    }
   }
 }
 
-
-.startover { 
+.startover {
+  min-width: 250px;
+  color: white;
   margin-top: $uxg-spacing-2;
   margin-bottom: $uxg-spacing-2;
-  margin-right: auto;
-  margin-left: auto;
-  display: grid;
+  width: 90%;
+  margin-left: 5%;
+  margin-right: 5%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
   align-items: center;
   box-sizing: border-box;
   padding: 12px 24px;
   height: 44px;
   background: $color-dark-primary-0;
   border: none;
-  border-radius: 24px;
+  border-radius: $radius-buttons;
   color: white;
   cursor: pointer;
   font-weight: 700;
@@ -488,9 +531,99 @@ html {
     background-color: $color-primary-1;
     color: white;
   }
-  a{
+  a {
     text-decoration: none;
     color: white;
   }
+  svg{
+    margin-right: $uxg-spacing-2;
+  }
 }
+
+.tooltip {
+  display: inline;
+  font-size: 1.8rem;
+  font-weight: 500;
+  color: #fff;
+  position: relative;
+  cursor: pointer;
 }
+
+.tooltip::before {
+  content: attr(data-tooltip);
+  font-size: 15px;
+  position: absolute;
+  left: -180px; 
+  bottom: 100%;
+  min-width: 330px;
+  background: $color-tooltip-background;
+  padding: 5px 10px;
+  visibility: hidden;
+  opacity: 0;
+  color: white; 
+  z-index: 5;
+  border-radius: $radius-cards;
+  transition: 500ms opacity;
+}
+
+.tooltip::after {
+  content: "";
+  position: absolute;
+  left: 25%;
+  bottom: 92%;
+  width: 8px;
+  height: 8px;
+  background: $color-tooltip-background;
+  opacity: 0;
+  transform: rotate(45deg);
+  transition: 500ms opacity;
+}
+
+.tooltip:hover::before,
+.tooltip:hover::after {
+  opacity: 1;
+  visibility: visible;
+  transition-delay: 500ms;
+}
+
+.tooltip1::before{
+  left: -140px;
+}
+.tooltip2::before{
+  left: -250px;
+}
+
+.share{
+  width: 90%;
+  margin-left: 5%;
+  margin-right: 5%;
+  min-width: 250px;
+  color: white;
+  margin-top: $uxg-spacing-2;
+  margin-bottom: $uxg-spacing-2;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 12px 24px;
+  height: 44px;
+  background: $color-dark-primary-0;
+  border: none;
+  border-radius: $radius-buttons;
+  color: white;
+  cursor: pointer;
+  font-weight: 700;
+  transition: $transition-speed;
+  svg{
+    margin-right: $uxg-spacing-2;
+  }
+  a {
+    text-decoration: none;
+    color: white;
+  }
+::after{
+  color: red;
+}
+} 
+
