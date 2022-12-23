@@ -272,8 +272,8 @@ function myFunction2(e) {
   }
 
   // CHART 1
-
-  chartCard = document.createElement("span");
+  if(cantidaddecuotas>0){
+      chartCard = document.createElement("span");
   chartCard.setAttribute("id", "chartCard");
   document.querySelector("#resultados").appendChild(chartCard);
 
@@ -320,8 +320,10 @@ function myFunction2(e) {
     },
   });
 
-  // CHART 2
+  }
 
+  // CHART 2
+if( cantidaddecuotasOp2>0){
   chartCard2 = document.createElement("span");
   chartCard2.setAttribute("id", "chartCard2");
   document.querySelector("#resultados").appendChild(chartCard2);
@@ -370,6 +372,7 @@ function myFunction2(e) {
       },
     },
   });
+}
 
   // IMPUESTO AL SELLO
   impuestoAlSelloOp1 =
