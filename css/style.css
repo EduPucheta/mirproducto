@@ -518,13 +518,18 @@ html body .cuotas__app form .error__message {
 .results__page #table td {
   padding: 5px;
 }
+.results__page #table tr th {
+  text-align: center;
+}
 .results__page #table tr th:nth-of-type(2) {
   color: rgb(0, 156, 189);
   text-align: end;
+  padding: 0px;
 }
 .results__page #table tr th:nth-of-type(3) {
   color: rgb(237, 139, 0);
   text-align: end;
+  padding: 0px;
 }
 .results__page #table tr td:nth-of-type(2) {
   text-align: end;

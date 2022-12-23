@@ -87,7 +87,6 @@ document.querySelectorAll(".cuotas").forEach(function (i) {
     ) {
       document.getElementById("cantidaddecuotas").style.display = "none";
       document.getElementById("cantidaddecuotas").value = null;
-      document.querySelector("#cantidaddecuotas").classList.remove("selected");
     }
   });
 });
@@ -155,9 +154,8 @@ function checkInputs() {
   const valordelacuotaComp2 = document.querySelector("#valordelacuota2");
   const inflacion = document.querySelector("#inflacion__number");
   const impuestos = document.querySelector("#impuestoAlSello__number");
-  const chips1 = document.querySelector("#chip__cuotas1");
-  const chips2 = document.querySelector("#chip__cuotas2");
-
+  const chips1__error = document.querySelector("#chip__cuotas1"); 
+  const chips2__error = document.querySelector("#chip__cuotas2"); 
   const valordelacuotaCompInput = valordelacuotaComp.value.trim();
   const valordelacuotaCompInput2 = valordelacuotaComp2.value.trim();
 
@@ -195,58 +193,43 @@ function checkInputs() {
     setSuccessFor(impuestos);
   }
 
-// Chips
+// Chip1
 
-  if (chips1.contains(chips1.querySelector(".selected")) === false) {
-    setErrorFor(
-      chips1,
+/* if (chips1.contains(chips1.querySelector(".selected")) === false) {  
+  console.log("Error")
+  setErrorFor(
+    chips1__error,
+    "Elegí la cantidad de cuotas de la primera opción de financiación"
+  );
+  } else {
+    console.log("Success")
+    setSuccessFor(chips1__error);    
+  } */
+
+  if ((document.querySelector(".selected"))==null ||document.querySelector(".selected").value=="") {    
+        setErrorFor(
+      chips1__error,
       "Elegí la cantidad de cuotas de la primera opción de financiación"
     );
-  } else {
-    setSuccessFor(chips1.parentElement); 
-  }
-  if (
-    document.querySelector("#cantidaddecuotas").style.display == "flex" &&
-    document.querySelector("#cantidaddecuotas").value == ""
-  ) {
-    setErrorFor(
-      chips1,
-      "Elegí la cantidad de cuotas de la primera opción de financiación!" 
-    );
-  } else {
-    setSuccessFor(chips1.parentElement);
-  }
-  if (chips2.contains(chips2.querySelector(".selected2")) === false) {
-    setErrorFor(
-      chips2,
-      "Elegí la cantidad de cuotas de la segunda opción de financiación"
-    );
-  } else {
-    setSuccessFor(chips2.parentElement);
-  }
-  if (
-    document.querySelector("#cantidaddecuotas2").style.display == "flex" &&
-    document.querySelector("#cantidaddecuotas2").value == ""
-  ) {
-    setErrorFor(
-      chips2,
-      "Elegí la cantidad de cuotas de la segunda opción de financiación!" 
-    );
-  } else {
-    setSuccessFor(chips2.parentElement);
-  }
-  /*     if((document.querySelector("#cantidaddecuotas").style.display=="flex" && document.querySelector("#cantidaddecuotas").value == "") ) {
-      setErrorFor(chips1, 'Elegí la cantidad de cuotas de la primera opción de financiación.'); 
-  } else {
-    setSuccessFor(chips1.parentElement);
-  } */
-  //&& (document.querySelector("#cantidaddecuotas").contains(document.querySelector("#cantidaddecuotas").querySelector(".selected")===false)) ||
+    } else {
+      setSuccessFor(chips1__error);    
+    }
 
-  // Si no hay errores aca se ejecuta la función.
+
+    if ((document.querySelector(".selected2"))==null ||document.querySelector(".selected2").value=="") {    
+      setErrorFor(
+        chips2__error,
+        "Elegí la cantidad de cuotas de la primera opción de financiación"
+      );
+      } else {
+        setSuccessFor(chips2__error);    
+      }
+
   if (document.querySelectorAll(".error__message").length == 0) {
     myFunction();
   }
 }
+
 
 function setErrorFor(input, message) {
   //const formControl = input.parentElement;
@@ -254,8 +237,7 @@ function setErrorFor(input, message) {
     input.parentElement.contains(
       input.parentElement.querySelector(".error__message")
     ) === false
-  ) {
-    console.log(message)
+  ) { 
     errorMessageComp = document.createElement("div");
     errorMessageComp.className = "error__message";
     input.parentElement.appendChild(errorMessageComp);
@@ -276,10 +258,10 @@ function setSuccessFor(input) {
       input.parentElement.querySelector(".error__message") 
     )
   ) {
-    console.log(input)
     input.parentElement.querySelector(".error__message").remove();
   }
 }
+
 
 // VALOR TOTAL EN CONTADO
 

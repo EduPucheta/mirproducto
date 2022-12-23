@@ -90,31 +90,30 @@
         <div class="cuotas__app">
             <form method="get" id="form1" class="._bg__input" autocomplete="off">
                 <h2 class="cuotas__app__option1__title">Primera opción</h2>
-                <label for="cantidaddecuotas">
+                <label for="cantidaddecuotas" id="Op1__label">
                     <div class="chips__cuotas" id="chip__cuotas1">
-                        <input type="button" class="cuotas1" value="Contado" data-test2="0" />
-                        <input type="button" class="cuotas1" value="1 cuota" data-test2="1" />
-                        <input type="button" class="cuotas1" value="3 cuotas" data-test2="3" />
-                        <input type="button" class="cuotas1" value="6 cuotas" data-test2="6" />
-                        <input type="button" class="cuotas1" value="12 cuotas" data-test2="12" />
-                        <input type="button" class="cuotas1" value="Otra opción" onclick="showoptions3()" />
+                        <input type="button" class="cuotas" value="Contado" data-test="0" />
+                        <input type="button" class="cuotas" value="1 cuota" data-test="1" />
+                        <input type="button" class="cuotas" value="3 cuotas" data-test="3" />
+                        <input type="button" class="cuotas" value="6 cuotas" data-test="6" />
+                        <input type="button" class="cuotas" value="12 cuotas" data-test="12" />
+                        <input type="button" class="cuotas" value="Otra opción" onclick="showoptions3()" />
                     </div>
                     <input type="number" id="cantidaddecuotas" class="input label" name="cantidaddecuotas"
                         placeholder="Ejemplo: 9 cuotas" min="1" max="10000" />
                 </label>
-
-                <label for="valordelacuota">Valor de cada cuota
-                    <div class="tooltip" data-tooltip="En caso de elegir contado ingresar el valor total de la compra">
-                        <svg width="18px" height="18px" viewBox="0 0 24 24" fill="none"
-                            xmlns="http://www.w3.org/2000/svg">
+                <label for="valordelacuota">Valor de cada cuota 
+                    <div class="tooltip"
+                    data-tooltip="En caso de elegir contado ingresar el valor total de la compra">
+                         <svg width="18px" height="18px" viewBox="0 0 24 24" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
                             <path
-                                d="M11 15H13V17H11V15ZM11 7H13V13H11V7ZM11.99 2C6.47 2 2 6.48 2 12C2 17.52 6.47 22 11.99 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 11.99 2ZM12 20C7.58 20 4 16.42 4 12C4 7.58 7.58 4 12 4C16.42 4 20 7.58 20 12C20 16.42 16.42 20 12 20Z"
-                                fill="black" />
-                        </svg>
-                    </div>
-                    <input type="text" inputmode="numeric" id="valordelacuota" class="input label"
-                        name="valordelacuota" data-type="currency" placeholder="$" />
-                </label>
+                            d="M11 15H13V17H11V15ZM11 7H13V13H11V7ZM11.99 2C6.47 2 2 6.48 2 12C2 17.52 6.47 22 11.99 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 11.99 2ZM12 20C7.58 20 4 16.42 4 12C4 7.58 7.58 4 12 4C16.42 4 20 7.58 20 12C20 16.42 16.42 20 12 20Z"
+                            fill="black" />
+                         </svg>
+                    </div> 
+                    <input type="text" inputmode="numeric" id="valordelacuota" class="input label" name="valordelacuota"
+                        data-type="currency" placeholder="$" /></label>
                 <h2 class="cuotas__app__option2__title">Segunda opción</h2>
                 <label for="cantidaddecuotas2">
                     <div class="chips__cuotas" id="chip__cuotas2">
@@ -130,24 +129,24 @@
                 </label>
 
                 <label for="valordelacuota2">Valor de cada cuota
-                    <div class="tooltip" data-tooltip="En caso de elegir contado ingresar el valor total de la compra">
-                        <svg width="18px" height="18px" viewBox="0 0 24 24" fill="none"
-                            xmlns="http://www.w3.org/2000/svg">
+                    <div class="tooltip"
+                    data-tooltip="En caso de elegir contado ingresar el valor total de la compra">
+                         <svg width="18px" height="18px" viewBox="0 0 24 24" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
                             <path
-                                d="M11 15H13V17H11V15ZM11 7H13V13H11V7ZM11.99 2C6.47 2 2 6.48 2 12C2 17.52 6.47 22 11.99 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 11.99 2ZM12 20C7.58 20 4 16.42 4 12C4 7.58 7.58 4 12 4C16.42 4 20 7.58 20 12C20 16.42 16.42 20 12 20Z"
-                                fill="black" />
-                        </svg>
-                    </div>
+                            d="M11 15H13V17H11V15ZM11 7H13V13H11V7ZM11.99 2C6.47 2 2 6.48 2 12C2 17.52 6.47 22 11.99 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 11.99 2ZM12 20C7.58 20 4 16.42 4 12C4 7.58 7.58 4 12 4C16.42 4 20 7.58 20 12C20 16.42 16.42 20 12 20Z"
+                            fill="black" />
+                         </svg>
+                    </div>  
                     <input type="text" inputmode="numeric" id="valordelacuota2" class="input label"
-                        name="valordelacuota2" data-type="currency" placeholder="$" />
-                </label>
+                        name="valordelacuota2" data-type="currency" placeholder="$" /></label>
                 <div class="advaced_options__withoptions">
                     <div class="advaced_options" onclick="showoptions2()">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
                                 d="M12 4C16.41 4 20 7.59 20 12C20 16.41 16.41 20 12 20C7.59 20 4 16.41 4 12C4 7.59 7.59 4 12 4ZM12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12 15L8 11H16L12 15Z"
                                 fill="black" />
-                        </svg>
+                        </svg> 
                         <p>Más opciones</p>
                     </div>
                     <div id="advanced__options">

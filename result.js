@@ -415,7 +415,7 @@ function myFunction2(e) {
     },
   ];
 
-  let headers = ["", "Opción 1", "Opción 2"];
+  let headers = ["", "1º Opción", "2º Opción"];
 
   let table = document.createElement("table");
   let headerRow = document.createElement("tr");

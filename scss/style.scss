@@ -488,13 +488,18 @@ html {
     td {
       padding: 5px;
     }
+    tr th {
+      text-align: center; 
+    }
     tr th:nth-of-type(2) {
       color: $color-secondary-1;
       text-align: end;
+      padding: 0px; 
     }
     tr th:nth-of-type(3) {
       color: $color-secondary-2;
       text-align: end;
+      padding: 0px; 
     }
     tr td:nth-of-type(2) {
       text-align: end;
