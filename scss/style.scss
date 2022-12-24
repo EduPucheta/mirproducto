@@ -16,7 +16,7 @@ html {
         180deg,
         $color-dark-primary-0 0%,
         $color-dark-primary-0 5%,
-        $color-primary-1 50%
+        $color-primary-1 50%  
       );
       min-height: 900px;
     }
@@ -301,12 +301,12 @@ html {
             transition-duration: 0.3s;
             cursor: pointer;
             &:hover {
-              border: 1px solid $color-button-chip-op2-border;
+              border: 1px solid $color-secondary-2;
             }
           }
           .selected2 {
-            background-color: rgba(237, 139, 0, 0.16);
-            border: 1px solid rgba(237, 139, 0, 1);
+            background-color: $color-secondary-2-16;
+            border: 1px solid $color-secondary-2-10; 
           }
         }
 
@@ -346,14 +346,14 @@ html {
         }
 
         #valordelacuota2 {
-          // background-color: $color-button-chip-op2-selected ;
+          // background-color: $color-secondary-2-04-selected ;
           &:focus-visible {
             outline-color: $color-secondary-2;
           }
         }
 
         .advaced_options__withoptions {
-          margin-bottom: $uxg-spacing-4;
+          margin-bottom: $uxg-spacing-4;  
           margin-top: $uxg-spacing-3;
           .advaced_options {
             width: fit-content;
@@ -630,5 +630,5 @@ html {
 ::after{
   color: red;
 }
-} 
+}  
 

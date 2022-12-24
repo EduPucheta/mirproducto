@@ -47,10 +47,10 @@ html {
 }
 html body {
   font-family: "Inter", sans-serif;
-  background-color: #F04E98;
+  background-color: #694ED6;
 }
 html body .background {
-  background-image: linear-gradient(180deg, #4A3B99 0%, #4A3B99 5%, #F04E98 50%);
+  background-image: linear-gradient(180deg, #4A3B99 0%, #4A3B99 5%, #694ED6 50%);
   min-height: 900px;
 }
 html body nav {
@@ -73,7 +73,7 @@ html body nav img {
   }
 }
 html body nav #myBtn {
-  border: 1px solid #F04E98;
+  border: 1px solid #694ED6;
   border-radius: 8px;
   color: white;
   font-style: normal;
@@ -89,7 +89,7 @@ html body nav #myBtn {
   cursor: pointer;
 }
 html body nav #myBtn:hover {
-  background-color: #F04E98;
+  background-color: #694ED6;
   color: white;
 }
 @media (max-width: 1025px) {
@@ -156,8 +156,8 @@ html body .cuotas__app__option1__title {
           text-decoration-color: rgb(0, 156, 189);
 }
 html body .cuotas__app__option2__title {
-  -webkit-text-decoration-color: rgb(237, 139, 0);
-          text-decoration-color: rgb(237, 139, 0);
+  -webkit-text-decoration-color: #F04E98;
+          text-decoration-color: #F04E98;
 }
 html body .modal-content {
   max-width: 600px;
@@ -192,7 +192,7 @@ html body .modal-content .modal-content__start__button {
   transition: 0.3s;
 }
 html body .modal-content .modal-content__start__button:hover {
-  background-color: #F04E98;
+  background-color: #694ED6;
   color: white;
 }
 html body .modal-content p {
@@ -349,11 +349,11 @@ html body .cuotas__app form #chip__cuotas2 input {
   cursor: pointer;
 }
 html body .cuotas__app form #chip__cuotas2 input:hover {
-  border: 1px solid rgb(237, 139, 0);
+  border: 1px solid #F04E98;
 }
 html body .cuotas__app form #chip__cuotas2 .selected2 {
-  background-color: rgba(237, 139, 0, 0.16);
-  border: 1px solid rgb(237, 139, 0);
+  background-color: rgba(240, 78, 152, 0.16);
+  border: 1px solid rgba(240, 78, 152, 0.1);
 }
 html body .cuotas__app form #cantidaddecuotas {
   display: none;
@@ -365,7 +365,7 @@ html body .cuotas__app form #cantidaddecuotas:focus-visible {
 html body .cuotas__app form #cantidaddecuotas2 {
   display: none;
   transition-duration: 0.3s;
-  outline-color: rgb(237, 139, 0);
+  outline-color: #F04E98;
 }
 html body .cuotas__app form .label {
   background: rgba(105, 78, 214, 0.08);
@@ -387,7 +387,7 @@ html body .cuotas__app form #valordelacuota:focus-visible {
   outline-color: rgb(0, 156, 189);
 }
 html body .cuotas__app form #valordelacuota2:focus-visible {
-  outline-color: rgb(237, 139, 0);
+  outline-color: #F04E98;
 }
 html body .cuotas__app form .advaced_options__withoptions {
   margin-bottom: 24px;
@@ -443,7 +443,7 @@ html body .cuotas__app form #submitbutton {
   transition: 0.3s;
 }
 html body .cuotas__app form #submitbutton:hover {
-  background-color: #F04E98;
+  background-color: #694ED6;
   color: white;
 }
 html body .cuotas__app form .error__message {
@@ -469,7 +469,7 @@ html body .cuotas__app form .error__message {
   color: rgb(0, 156, 189);
 }
 #resultados #mensajederesultado3 .secondoption {
-  color: rgb(237, 139, 0);
+  color: #F04E98;
 }
 #resultados #table {
   order: -2;
@@ -527,7 +527,7 @@ html body .cuotas__app form .error__message {
   padding: 0px;
 }
 .results__page #table tr th:nth-of-type(3) {
-  color: rgb(237, 139, 0);
+  color: #F04E98;
   text-align: end;
   padding: 0px;
 }
@@ -562,7 +562,7 @@ html body .cuotas__app form .error__message {
   transition: 0.3s;
 }
 .startover:hover {
-  background-color: #F04E98;
+  background-color: #694ED6;
   color: white;
 }
 .startover a {

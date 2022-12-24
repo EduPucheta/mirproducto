@@ -28,7 +28,7 @@ $color-background-1: #F5F4F8;
 $color-dark-primary-0: #4A3B99;
 
 $color-primary-0: #694ED6;
-$color-primary-1: #F04E98;
+$color-primary-1: #694ED6; 
 $color-primary-2: #414141;
 $color-primary-3: #C7C8CA;
 
@@ -36,8 +36,9 @@ $color-secondary-1: rgba(0, 156, 189, 1);
 $color-secondary-1-04: rgba($color-secondary-1, 0.04);
 $color-secondary-1-16: rgba($color-secondary-1, 0.16);
 
-$color-secondary-2: rgba(237, 139, 0, 1);
+$color-secondary-2:  #F04E98;  
 $color-secondary-2-04: rgba($color-secondary-2, 0.04);
+$color-secondary-2-10: rgba($color-secondary-2, 0.10);
 $color-secondary-2-16: rgba($color-secondary-2, 0.16);
 
 
@@ -49,9 +50,7 @@ $color-button-chip-op1-border: #009cbd;
 $color-button-chip-op1: rgba(0, 156, 189, 0.04);
 $color-button-chip-op1-selected: rgba(0, 156, 189, 0.16);
 
-$color-button-chip-op2-border: rgba(237, 139, 0, 1); 
-$color-button-chip-op2: rgba(237, 139, 0, 0.04);
-$color-button-chip-op2-selected:  rgba(237, 139, 0, 0.16);
+
  
 
 $color-button-unselected: #FFFFFF;
