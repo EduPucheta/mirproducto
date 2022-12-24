@@ -270,7 +270,7 @@ function myFunction2(e) {
       formatter.format(valordelacuota4) +
       " cada una.";
   }
-    if (valoractualresult2op2 = valoractualresult2) {
+    if (valoractualresult2op2 == valoractualresult2) {
     firstResultMessage.innerHTML =
       "Ambas opciones de financiación son indiferetes."; 
   }
