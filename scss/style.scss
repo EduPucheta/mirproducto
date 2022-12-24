@@ -21,9 +21,12 @@ html {
       min-height: 900px;
     }
     nav {
-      height: 48px;
+/*       height: 48px;
       @media (min-width: 1025px) {
         height: 64px;
+      } */
+      .nav__nav-item__link{
+        color: white;
       }
       img {
         margin-top: 10px;
@@ -34,7 +37,7 @@ html {
           margin-top: $uxg-spacing-3;
         }
       }
-      #myBtn {
+      .myBtn {
         border: 1px solid $color-primary-1;
         border-radius: $radius-buttons;
         color: white;
@@ -43,7 +46,7 @@ html {
         line-height: 20px;
         background: none;
         padding: 5px;
-        float: right;
+
         margin-top: 25px;
         margin-right: 250px;
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
@@ -55,7 +58,6 @@ html {
         }
         @media (max-width: 1025px) {
           margin-top: $uxg-spacing-2;
-          margin-right: 5%;
           max-width: 100px;
           overflow-wrap: break-word;
           word-wrap: break-word;

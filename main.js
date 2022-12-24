@@ -58,7 +58,7 @@ window.onclick = function (event) {
 };
 
 // Muestra el modal de bienvenida si es la primera sesión
-if (localStorage.getItem("visitCount") == 0) {
+if (localStorage.getItem("visitCount") < 2) {
   modal.style.display = "block";
 }
 

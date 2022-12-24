@@ -54,12 +54,13 @@ html body .background {
   min-height: 900px;
 }
 html body nav {
-  height: 48px;
+  /*       height: 48px;
+        @media (min-width: 1025px) {
+          height: 64px;
+        } */
 }
-@media (min-width: 1025px) {
-  html body nav {
-    height: 64px;
-  }
+html body nav .nav__nav-item__link {
+  color: white;
 }
 html body nav img {
   margin-top: 10px;
@@ -72,7 +73,7 @@ html body nav img {
     margin-top: 16px;
   }
 }
-html body nav #myBtn {
+html body nav .myBtn {
   border: 1px solid #694ED6;
   border-radius: 8px;
   color: white;
@@ -81,21 +82,19 @@ html body nav #myBtn {
   line-height: 20px;
   background: none;
   padding: 5px;
-  float: right;
   margin-top: 25px;
   margin-right: 250px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
   cursor: pointer;
 }
-html body nav #myBtn:hover {
+html body nav .myBtn:hover {
   background-color: #694ED6;
   color: white;
 }
 @media (max-width: 1025px) {
-  html body nav #myBtn {
+  html body nav .myBtn {
     margin-top: 8px;
-    margin-right: 5%;
     max-width: 100px;
     overflow-wrap: break-word;
     word-wrap: break-word;
