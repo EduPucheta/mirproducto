@@ -154,17 +154,24 @@ function checkInputs() {
   const valordelacuotaComp2 = document.querySelector("#valordelacuota2");
   const inflacion = document.querySelector("#inflacion__number");
   const impuestos = document.querySelector("#impuestoAlSello__number");
-  const chips1__error = document.querySelector("#chip__cuotas1"); 
-  const chips2__error = document.querySelector("#chip__cuotas2"); 
+  const chips1__error = document.querySelector("#chip__cuotas1");
+  const chips2__error = document.querySelector("#chip__cuotas2");
   const valordelacuotaCompInput = valordelacuotaComp.value.trim();
   const valordelacuotaCompInput2 = valordelacuotaComp2.value.trim();
-
 
   if (valordelacuotaCompInput === "") {
     setErrorFor(
       valordelacuotaComp,
       "Ingresá el valor de la cuota de la primera opción"
-    )
+    );
+  } else {
+    setSuccessFor(valordelacuotaComp);
+  }
+  if (valordelacuotaCompInput == "$0") {
+    setErrorFor(
+      valordelacuotaComp,
+      "Ingresá el valor de la cuota no puede ser $0"
+    );
   } else {
     setSuccessFor(valordelacuotaComp);
   }
@@ -177,6 +184,16 @@ function checkInputs() {
   } else {
     setSuccessFor(valordelacuotaComp2);
   }
+  
+  if (valordelacuotaCompInput2 == "$0") {
+    setErrorFor(
+      valordelacuotaComp2,
+      "Ingresá el valor de la cuota no puede ser $0"
+    );
+  } else {
+    setSuccessFor(valordelacuotaComp2);
+  }
+
   const inflacionInput = inflacion.value.trim();
   if (inflacionInput === "") {
     setErrorFor(inflacion, "Ingresá el valor de la inflación anual estimada");
@@ -193,9 +210,9 @@ function checkInputs() {
     setSuccessFor(impuestos);
   }
 
-// Chip1
+  // Chip1
 
-/* if (chips1.contains(chips1.querySelector(".selected")) === false) {  
+  /* if (chips1.contains(chips1.querySelector(".selected")) === false) {  
   console.log("Error")
   setErrorFor(
     chips1__error,
@@ -206,30 +223,44 @@ function checkInputs() {
     setSuccessFor(chips1__error);    
   } */
 
-  if ((document.querySelector(".selected"))==null ||document.querySelector(".selected").value=="") {    
-        setErrorFor(
+  if (
+    document.querySelector(".selected") == null ||
+    document.querySelector(".selected").value == ""
+  ) {
+    setErrorFor(
       chips1__error,
       "Elegí la cantidad de cuotas de la primera opción de financiación"
     );
-    } else {
-      setSuccessFor(chips1__error);    
-    }
+  } else {
+    setSuccessFor(chips1__error);
+  }
 
 
-    if ((document.querySelector(".selected2"))==null ||document.querySelector(".selected2").value=="") {    
-      setErrorFor(
-        chips2__error,
-        "Elegí la cantidad de cuotas de la primera opción de financiación"
-      );
-      } else {
-        setSuccessFor(chips2__error);    
-      }
-
+  if (
+    document.querySelector(".selected2") == null ||
+    document.querySelector(".selected2").value == ""
+  ) {
+    setErrorFor(
+      chips2__error,
+      "Elegí la cantidad de cuotas de la primera opción de financiación"
+    );
+  } else {
+    setSuccessFor(chips2__error);
+  }
+  if (document.querySelector(".selected").value == 0) {
+    setErrorFor(chips1__error, "La cantidad de cuotas no puede ser 0");
+  } else {
+    setSuccessFor(chips1__error);
+  }
+  if (document.querySelector(".selected2").value == 0) {
+    setErrorFor(chips2__error, "La cantidad de cuotas no puede ser 0");
+  } else {
+    setSuccessFor(chips2__error);
+  } 
   if (document.querySelectorAll(".error__message").length == 0) {
     myFunction();
   }
 }
-
 
 function setErrorFor(input, message) {
   //const formControl = input.parentElement;
@@ -237,11 +268,11 @@ function setErrorFor(input, message) {
     input.parentElement.contains(
       input.parentElement.querySelector(".error__message")
     ) === false
-  ) { 
+  ) {
     errorMessageComp = document.createElement("div");
     errorMessageComp.className = "error__message";
     input.parentElement.appendChild(errorMessageComp);
-    errorMessageComp.innerText = message; 
+    errorMessageComp.innerText = message;
     if (
       input.id === "inflacion__number" ||
       input.id === "impuestoAlSello__number"
@@ -255,13 +286,12 @@ function setErrorFor(input, message) {
 function setSuccessFor(input) {
   if (
     input.parentElement.contains(
-      input.parentElement.querySelector(".error__message") 
+      input.parentElement.querySelector(".error__message")
     )
   ) {
     input.parentElement.querySelector(".error__message").remove();
   }
 }
-
 
 // VALOR TOTAL EN CONTADO
 

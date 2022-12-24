@@ -53,22 +53,19 @@ html body .background {
   background-image: linear-gradient(180deg, #4A3B99 0%, #4A3B99 5%, #694ED6 50%);
   min-height: 900px;
 }
-html body nav {
-  /*       height: 48px;
-        @media (min-width: 1025px) {
-          height: 64px;
-        } */
-}
 html body nav .nav__nav-item__link {
   color: white;
 }
-html body nav img {
+html body nav .nav-item__right {
+  text-align: right;
+}
+html body nav .logo {
   margin-top: 10px;
   margin-left: 5%;
   width: 200px;
 }
 @media (min-width: 1025px) {
-  html body nav img {
+  html body nav .logo {
     margin-left: 200px;
     margin-top: 16px;
   }
@@ -159,6 +156,7 @@ html body .cuotas__app__option2__title {
           text-decoration-color: #F04E98;
 }
 html body .modal-content {
+  width: 90%;
   max-width: 600px;
   border-radius: 7px;
 }
@@ -262,10 +260,8 @@ html body .cuotas__app form .input:active {
   flex-grow: 1;
 }
 html body .cuotas__app form .input:invalid {
-  border: 2px solid #cc3535;
-  /* Alert-Shadow */
+  border: 3px solid #D60040;
   box-shadow: 0px 0px 0px 3px #faebeb;
-  border-radius: 24px;
   /* Inside auto layout */
   flex: none;
   order: 1;
@@ -393,9 +389,9 @@ html body .cuotas__app form .advaced_options__withoptions {
   margin-top: 16px;
 }
 html body .cuotas__app form .advaced_options__withoptions .advaced_options {
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
+  width: 100%;
+}
+html body .cuotas__app form .advaced_options__withoptions .advaced_options {
   display: block;
   text-align: left;
   font-size: 12px;
@@ -572,7 +568,7 @@ html body .cuotas__app form .error__message {
   margin-right: 8px;
 }
 
-.tooltip {
+.tooltip__class {
   display: inline;
   font-size: 1.8rem;
   font-weight: 500;
@@ -581,7 +577,7 @@ html body .cuotas__app form .error__message {
   cursor: pointer;
 }
 
-.tooltip::before {
+.tooltip__class::before {
   content: attr(data-tooltip);
   font-size: 15px;
   position: absolute;
@@ -598,7 +594,7 @@ html body .cuotas__app form .error__message {
   transition: 500ms opacity;
 }
 
-.tooltip::after {
+.tooltip__class::after {
   content: "";
   position: absolute;
   left: 25%;
@@ -611,8 +607,8 @@ html body .cuotas__app form .error__message {
   transition: 500ms opacity;
 }
 
-.tooltip:hover::before,
-.tooltip:hover::after {
+.tooltip__class:hover::before,
+.tooltip__class:hover::after {
   opacity: 1;
   visibility: visible;
   transition-delay: 500ms;
@@ -658,4 +654,16 @@ html body .cuotas__app form .error__message {
 }
 .share ::after {
   color: red;
+}
+
+.cafecito {
+  display: flex;
+  justify-content: center;
+}
+
+.reserved_rights {
+  align-self: center;
+  text-align: center;
+  color: white;
+  font-size: smaller;
 }/*# sourceMappingURL=style.css.map */

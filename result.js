@@ -270,6 +270,10 @@ function myFunction2(e) {
       formatter.format(valordelacuota4) +
       " cada una.";
   }
+    if (valoractualresult2op2 = valoractualresult2) {
+    firstResultMessage.innerHTML =
+      "Ambas opciones de financiación son indiferetes."; 
+  }
 
   // CHART 1
   if(cantidaddecuotas>0){
@@ -347,7 +351,7 @@ if( cantidaddecuotasOp2>0){
   const datosVentas20202 = {
     label: "Cuota al valor de hoy",
     data: arr2Op2, // La data es un arreglo que debe tener la misma cantidad de valores que la cantidad de etiquetas
-    backgroundColor: "rgba(237, 139, 0, 1)", // Color de fondo
+    backgroundColor: "#F04E98", // Color de fondo
     borderColor: "rgba(0, 156, 189, 1)", // Color del borde
     borderWidth: 0, // Ancho del borde
   };

@@ -21,14 +21,13 @@ html {
       min-height: 900px;
     }
     nav {
-/*       height: 48px;
-      @media (min-width: 1025px) {
-        height: 64px;
-      } */
       .nav__nav-item__link{
         color: white;
       }
-      img {
+      .nav-item__right{
+        text-align: right;
+      }
+      .logo {
         margin-top: 10px;
         margin-left: 5%;
         width: 200px;
@@ -115,6 +114,7 @@ html {
 
     }
     .modal-content {
+      width: 90%;
       max-width: 600px;
       border-radius: $radius-cards;
       .modal-content__title {
@@ -216,10 +216,8 @@ html {
             flex-grow: 1;
           }
           &:invalid {
-            border: 2px solid #cc3535;
-            /* Alert-Shadow */
-            box-shadow: 0px 0px 0px 3px #faebeb;
-            border-radius: $radius-chips;
+            border: 3px solid $color-error;
+            box-shadow: 0px 0px 0px 3px #faebeb; 
             /* Inside auto layout */
             flex: none;
             order: 1;
@@ -358,7 +356,9 @@ html {
           margin-bottom: $uxg-spacing-4;  
           margin-top: $uxg-spacing-3;
           .advaced_options {
-            width: fit-content;
+            width: 100%;
+          }
+          .advaced_options {
             display: block;
             text-align: left;
             font-size: 12px;
@@ -547,7 +547,7 @@ html {
   }
 }
 
-.tooltip {
+.tooltip__class {
   display: inline;
   font-size: 1.8rem;
   font-weight: 500;
@@ -556,7 +556,7 @@ html {
   cursor: pointer;
 }
 
-.tooltip::before {
+.tooltip__class::before {
   content: attr(data-tooltip);
   font-size: 15px;
   position: absolute;
@@ -573,7 +573,7 @@ html {
   transition: 500ms opacity;
 }
 
-.tooltip::after {
+.tooltip__class::after {
   content: "";
   position: absolute;
   left: 25%;
@@ -586,9 +586,9 @@ html {
   transition: 500ms opacity;
 }
 
-.tooltip:hover::before,
-.tooltip:hover::after {
-  opacity: 1;
+.tooltip__class:hover::before,
+.tooltip__class:hover::after {
+  opacity: 1;  
   visibility: visible;
   transition-delay: 500ms;
 }
@@ -633,4 +633,13 @@ html {
   color: red;
 }
 }  
-
+.cafecito{
+  display: flex;
+  justify-content: center;
+}
+.reserved_rights{
+  align-self: center;
+  text-align: center;
+  color: white;
+  font-size: smaller;
+}
