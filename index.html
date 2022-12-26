@@ -90,8 +90,7 @@
                     Ejemplo: no sabés si te conviene, comprar en 3 cuotas de 500$ o en 6 cuotas de 250$.
                 </p>
                 <p>
-                    Ingresar de la siguiente forma:
-                    En primera opción elegir 3 cuotas, valor de cada cuota 500$. <br>
+                    Ingresar de la siguiente forma: en primera opción elegir 3 cuotas, valor de cada cuota 500$. <br>
                     En la segúnda opción: 6 cuotas, valor de cada cuota 250$. <br>
                     Darle click en calcular y te dirá la mejor opción.  
                 </p>
@@ -177,14 +176,13 @@
                                         fill="black" />
                                 </svg>
                             </div>
-                            <input form="form1" type="number" id="inflacion__number" class="input label"
-                                name="inflacion" value="105.8" min="0" max="10000" step="0.01" placeholder="%"/>
+                            <input form="form1" type="text" id="inflacion__number" class="input label percent"
+                                name="inflacion" value="106"  placeholder="%" inputmode="numeric"/> 
                         </label>
                         <label for="impuestoAlSello">Impuesto al pago con tarjeta
                             <div class="tooltip__class tooltip2"
-                                data-tooltip="El porcentaje del impuesto depende de cada provincia:
-                                Córdoba: 1.5%
-                                Buenos Aires: 1.2%">
+                                data-tooltip="El porcentaje del impuesto depende de cada provincia: 
+                                Buenos Aires: 1.2%, Córdoba: 1.5%">
                                 <svg width="18px" height="18px" viewBox="0 0 24 24" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <path
@@ -192,8 +190,8 @@
                                         fill="black" />
                                 </svg>
                             </div>
-                            <input form="form1" type="number" id="impuestoAlSello__number" class="input label"
-                                name="impuestoAlSello" value="0.015" min="0" max="100" step="0.001" placeholder="%"/>
+                            <input form="form1" type="text" id="impuestoAlSello__number" class="input label percent"
+                                name="impuestoAlSello" value="1.5%" placeholder="%" inputmode="numeric"/>
                         </label>
                     </div>
                 </div>

@@ -293,7 +293,7 @@ function setSuccessFor(input) {
   }
 }
 
-// VALOR TOTAL EN CONTADO
+// Tomar valores del formulario
 
 function myFunction(e) {
   // OPCIÓN 1
@@ -341,7 +341,10 @@ function myFunction(e) {
 
 function PV() {
   anualInflation = document.querySelector("#inflacion__number").value;
+  anualInflation = anualInflation.replace("%", "");
   impuestoAlsello = document.querySelector("#impuestoAlSello__number").value;
+  impuestoAlsello = impuestoAlsello.replace("%", "")/100;
+
   // OPCION 1
   //Aquí se elije el valor de la cantidad de cuotas seleccionadas. si tiene el atributo data elige los botones si no el valor custom
   if (document.querySelector(".selected").hasAttribute("data-test")) {
@@ -391,7 +394,15 @@ function PV() {
   window.location.href = url;
 }
 
-//Estas funciones las obtuve de Stackoverflow y sirven para aplicar el formato de $$ en los inputs del form
+//  Format as percent
+
+
+$(document).ready(function(){
+  $(".percent").on('input', function() {
+      $(this).val(function(i, v) {
+       return v.replace('%','') + '%';  });
+      });
+  });
 
 // Jquery Dependency
 $("input[data-type='currency']").on({

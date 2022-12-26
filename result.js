@@ -276,7 +276,7 @@ function myFunction2(e) {
   }
 
   // CHART 1
-  if(cantidaddecuotas>0){
+  if(cantidaddecuotas>1){
       chartCard = document.createElement("span");
   chartCard.setAttribute("id", "chartCard");
   document.querySelector("#resultados").appendChild(chartCard);
@@ -327,7 +327,7 @@ function myFunction2(e) {
   }
 
   // CHART 2
-if( cantidaddecuotasOp2>0){
+if( cantidaddecuotasOp2>1){
   chartCard2 = document.createElement("span");
   chartCard2.setAttribute("id", "chartCard2");
   document.querySelector("#resultados").appendChild(chartCard2);
