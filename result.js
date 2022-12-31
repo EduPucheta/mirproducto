@@ -208,13 +208,6 @@ function myFunction2(e) {
   const arr1 = numeroDeCadaCuota;
   const arr2 = valoractualDeCadaCuota;
 
-  const obj = {};
-  arr1.forEach((element, index) => {
-    obj[element] = arr2[index];
-  });
-
-  actualValue$Resulttxt = formatter.format(valoractualresult2);
-
   // OPCION 2
   let valoractualresult2op2 = 0;
   const valoractualDeCadaCuotaop2 = [];
@@ -237,15 +230,6 @@ function myFunction2(e) {
   }
   const arr1Op2 = numeroDeCadaCuotaop2;
   const arr2Op2 = valoractualDeCadaCuotaop2;
-
-  const objOp2 = {};
-
-  arr1Op2.forEach((element, index) => {
-    objOp2[element] = arr1Op2[index];
-  });
-
-  console.log(arr2);
-  console.log(valoractualDeCadaCuotaop2);
 
   actualValue$ResultOp2txt = formatter.format(valoractualresult2op2);
 
@@ -270,113 +254,150 @@ function myFunction2(e) {
       formatter.format(valordelacuota4) +
       " cada una.";
   }
-    if (valoractualresult2op2 == valoractualresult2) {
+  if (valoractualresult2op2 == valoractualresult2) {
     firstResultMessage.innerHTML =
-      "Ambas opciones de financiación son indiferetes."; 
+      "Ambas opciones de financiación son indiferetes.";
   }
 
   // CHART 1
-  if(cantidaddecuotas>1){
-      chartCard = document.createElement("span");
-  chartCard.setAttribute("id", "chartCard");
-  document.querySelector("#resultados").appendChild(chartCard);
+  if (cantidaddecuotas > 1) {
+    chartCard = document.createElement("span");
+    chartCard.setAttribute("id", "chartCard");
+    document.querySelector("#resultados").appendChild(chartCard);
 
-  titleChart = document.createElement("span");
-  titleChart.setAttribute("id", "title_grafica");
-  document.querySelector("#chartCard").appendChild(titleChart);
-  titleChart.textContent =
-    "Cuotas ajustadas al valor de hoy de la primera opción de financiación";
+    titleChart = document.createElement("span");
+    titleChart.setAttribute("id", "title_grafica");
+    document.querySelector("#chartCard").appendChild(titleChart);
+    titleChart.textContent =
+      "Cuotas ajustadas al valor de hoy de la primera opción de financiación";
 
-  chart = document.createElement("canvas");
-  chart.setAttribute("id", "grafica");
-  document.querySelector("#chartCard").appendChild(chart);
+    chart = document.createElement("canvas");
+    chart.setAttribute("id", "grafica");
+    document.querySelector("#chartCard").appendChild(chart);
 
-  const $grafica = chart;
-  // Las etiquetas son las que van en el eje X.
+    const $grafica = chart;
+    // Las etiquetas son las que van en el eje X.
 
-  const etiquetas = arr1;
-  const datosVentas2020 = {
-    label: "Cuota al valor de hoy",
-    data: arr2, // La data es un arreglo que debe tener la misma cantidad de valores que la cantidad de etiquetas
-    backgroundColor: "rgba(0, 156, 189, 1)", // Color de fondo
-    borderColor: "rgba(0, 156, 189, 1)", // Color del borde
-    borderWidth: 0, // Ancho del borde
-  };
-  new Chart($grafica, {
-    type: "bar", // Tipo de gráfica
-    data: {
-      labels: etiquetas,
-      datasets: [
-        datosVentas2020,
-        // Aquí más datos...
-      ],
-    },
-    options: {
-      scales: {
-        yAxes: [
-          {
-            ticks: {
-              beginAtZero: true,
-            },
-          },
+    const etiquetas = arr1;
+
+    actualValue$Resulttxt = formatter.format(valoractualresult2);
+
+  
+
+    const datosVentas2020 = {
+      data: arr2, // La data es un arreglo que debe tener la misma cantidad de valores que la cantidad de etiquetas
+      backgroundColor: "rgba(0, 156, 189, 1)", // Color de fondo
+      borderColor: "rgba(0, 156, 189, 1)", // Color del borde
+      borderWidth: 0, // Ancho del borde
+    };
+
+    new Chart($grafica, {
+      type: "bar", // Tipo de gráfica
+      data: {
+        labels: etiquetas,
+        datasets: [
+          datosVentas2020,
+          // Aquí más datos...
         ],
       },
-    },
-  });
-
+      options: {
+        legend: {
+          display: false
+       },
+        scales: {
+          yAxes: [
+            {
+              ticks: {
+                beginAtZero: true,
+              },
+                          gridLines: {
+                color: "rgba(0, 0, 0, 0)",
+            }
+            },
+          ],
+                 xAxes: [{
+            gridLines: {
+                color: "rgba(0, 0, 0, 0)",
+            }
+        }], 
+        },
+        tooltips: {
+          callbacks: {
+            label: function (tooltipItems, data) {
+              return formatter.format(tooltipItems.yLabel.toString());
+            },
+          },
+        },
+      },
+    });
   }
 
   // CHART 2
-if( cantidaddecuotasOp2>1){
-  chartCard2 = document.createElement("span");
-  chartCard2.setAttribute("id", "chartCard2");
-  document.querySelector("#resultados").appendChild(chartCard2);
+  if (cantidaddecuotasOp2 > 1) {
+    chartCard2 = document.createElement("span");
+    chartCard2.setAttribute("id", "chartCard2");
+    document.querySelector("#resultados").appendChild(chartCard2);
 
-  titleChart2 = document.createElement("span");
-  titleChart2.setAttribute("id", "title_grafica2");
-  document.querySelector("#chartCard2").appendChild(titleChart2);
-  titleChart2.textContent =
-    "Cuotas ajustadas al valor de hoy de la segunda opción de financiación";
+    titleChart2 = document.createElement("span");
+    titleChart2.setAttribute("id", "title_grafica2");
+    document.querySelector("#chartCard2").appendChild(titleChart2);
+    titleChart2.textContent =
+      "Cuotas ajustadas al valor de hoy de la segunda opción de financiación";
 
-  chart2 = document.createElement("canvas");
-  chart2.setAttribute("id", "grafica2");
-  document.querySelector("#chartCard2").appendChild(chart2);
+    chart2 = document.createElement("canvas");
+    chart2.setAttribute("id", "grafica2");
+    document.querySelector("#chartCard2").appendChild(chart2);
 
-  const $grafica2 = chart2;
-  // Las etiquetas son las que van en el eje X.
+    const $grafica2 = chart2;
+    const etiquetas2 = arr1Op2;
 
-  const etiquetas2 = arr1Op2;
-
-  console.log(etiquetas2);
-  const datosVentas20202 = {
-    label: "Cuota al valor de hoy",
-    data: arr2Op2, // La data es un arreglo que debe tener la misma cantidad de valores que la cantidad de etiquetas
-    backgroundColor: "#F04E98", // Color de fondo
-    borderColor: "rgba(0, 156, 189, 1)", // Color del borde
-    borderWidth: 0, // Ancho del borde
-  };
-  new Chart($grafica2, {
-    type: "bar", // Tipo de gráfica
-    data: {
-      labels: etiquetas2,
-      datasets: [
-        datosVentas20202,
-        // Aquí más datos...
-      ],
-    },
-    options: {
-      scales: {
-        yAxes: [
-          {
-            ticks: {
-              beginAtZero: true,
-            },
-          },
+    const datosVentas20202 = {
+      label: "Cuota al valor de hoy",
+      data: arr2Op2, // La data es un arreglo que debe tener la misma cantidad de valores que la cantidad de etiquetas
+      backgroundColor: "#F04E98", // Color de fondo
+      borderColor: "rgba(0, 156, 189, 1)", // Color del borde
+      borderWidth: 0, // Ancho del borde
+    };
+    new Chart($grafica2, {
+      type: "bar", // Tipo de gráfica
+      data: {
+        labels: etiquetas2,
+        datasets: [
+          datosVentas20202,
+          // Aquí más datos...
         ],
       },
-    },
-  });
-}
+      options: {
+        legend: {
+          display: false
+       },
+        scales: {
+          yAxes: [
+            {
+              ticks: {
+                beginAtZero: true,
+              },
+                          gridLines: {
+                color: "rgba(0, 0, 0, 0)",
+            }
+            },
+          ],
+                 xAxes: [{
+            gridLines: {
+                color: "rgba(0, 0, 0, 0)",
+            }
+        }], 
+        },
+        tooltips: {
+          callbacks: {
+            label: function (tooltipItems, data) {
+              return formatter.format(tooltipItems.yLabel.toString());
+            },
+          },
+        },
+      },
+    });
+  }
 
   // IMPUESTO AL SELLO
   impuestoAlSelloOp1 =
@@ -481,9 +502,99 @@ if( cantidaddecuotasOp2>1){
     " La tasa del impuesto al sello utilizada es de " +
     impuestoAlSello * 100 +
     "%.";
+
+// Inversión en Naranja X
+let urlJson = "datos.json";
+
+const fetchJsonNaranjaX = fetch(urlJson)
+  .then((response) => response.json())
+  .then((response) => {
+    return response.RendimientoAnual__NaranjaX;
+  })
+  .catch((error) => {
+    console.log("error fetch");
+  });
+
+const updateRendimientosFetchNaranjaX = async () => {
+  const rendimientoAnualNaranjaX = await fetchJsonNaranjaX;
+  rendimientoMensual__NaranjaX = (Math.pow(1 + parseFloat(rendimientoAnualNaranjaX.replace("%","")) / 100, 1 / 12) - 1) ;
+  let rendimientosNaranjaX = [];
+  ValorTotalDeLasCuotas = valordelacuota4 * cantidaddecuotas;
+  for (let i = 0; i < cantidaddecuotas; i+=1) {
+    rendimientosNaranjaX.push((ValorTotalDeLasCuotas-valordelacuota4*i)*rendimientoMensual__NaranjaX)
+  }
+  function sumArray(array) {
+    let sum = 0; 
+    array.forEach(item => {
+      sum += item;
+    });
+      return sum;
+  }
+  
+  rentNx__Title = document.createElement("h4"); 
+  rentNx__Title.setAttribute("class", "NaranjaX__Title");
+  rentNx__Title.textContent = "Inversión en Naranja X";
+  document.querySelector(".Investments__content__option1").append(rentNx__Title);   
+
+  rentNx = document.createElement("span");
+  rentNx.setAttribute("class", "NaranjaX");
+  document.querySelector(".Investments__content__option1").append(rentNx);  
+
+
+
+
+  rentNx.textContent = "Si en lugar de pagar en contado mantenés tu plata en una cuenta de Naranja X a un rendimiento del " + rendimientoAnualNaranjaX + " anual, y mes a mes vas sacando la plata para pagar la tarjeta vas a ganar unos "  + formatter.format(sumArray(rendimientosNaranjaX)) +  " adicionales (Sin actualizar por inflación)."
+
+}; 
+updateRendimientosFetchNaranjaX();
+
+// Fetch Mercado Pago
+
+const fetchJsonMercadoPago= fetch(urlJson)
+  .then((response) => response.json())
+  .then((response) => {
+    return response.RendimientoAnual__MercadoPago;
+  })
+  .catch((error) => {
+    console.log("error fetch");
+  });
+
+const updateRendimientosFetchMercadoPago= async () => {
+  const rendimientoAnualMercadoPago= await fetchJsonMercadoPago;
+  rendimientoMensual__MercadoPago= (Math.pow(1 + parseFloat(rendimientoAnualMercadoPago.replace("%","")) / 100, 1 / 12) - 1) ;
+  let rendimientosMercadoPago = [];
+  ValorTotalDeLasCuotas = valordelacuota4 * cantidaddecuotas;
+  for (let i = 0; i < cantidaddecuotas; i+=1) {
+    rendimientosMercadoPago.push((ValorTotalDeLasCuotas-valordelacuota4*i)*rendimientoMensual__MercadoPago)
+  }
+  function sumArray(array) {
+    let sum = 0; 
+    array.forEach(item => {
+      sum += item;
+    });
+      return sum;
+  }
+  
+  rentMp__Title = document.createElement("h4"); 
+  rentMp__Title.setAttribute("class", "MP__Title");
+  rentMp__Title.textContent = "Inversión en Mercado Pago";
+  document.querySelector(".Investments__content__option1").append(rentMp__Title);   
+
+  rentMP = document.createElement("span");
+  rentMP.setAttribute("class", "MercadoPago");
+  document.querySelector(".Investments__content__option1").append(rentMP); 
+
+  rentMP.textContent = "Si en lugar de pagar en contado mantenés tu plata en una cuenta de Mercado Pago a un rendimiento del " + rendimientoAnualMercadoPago + " anual, y mes a mes vas sacando la plata para pagar la tarjeta vas a ganar unos "  + formatter.format(sumArray(rendimientosMercadoPago)) +  " adicionales (Sin actualizar por inflación)."
+
+}; 
+updateRendimientosFetchMercadoPago();
+
 }
 
-myFunction2();
+document.addEventListener("DOMContentLoaded", myFunction2())
+
+
+
 
 
 

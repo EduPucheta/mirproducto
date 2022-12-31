@@ -159,24 +159,16 @@ function checkInputs() {
   const valordelacuotaCompInput = valordelacuotaComp.value.trim();
   const valordelacuotaCompInput2 = valordelacuotaComp2.value.trim();
 
-  if (valordelacuotaCompInput === "") {
-    setErrorFor(
-      valordelacuotaComp,
-      "Ingresá el valor de la cuota de la primera opción"
-    );
-  } else {
-    setSuccessFor(valordelacuotaComp);
-  }
-  if (valordelacuotaCompInput == "$0") {
+  if (valordelacuotaCompInput == "$0"|| valordelacuotaCompInput =="") {
     setErrorFor(
       valordelacuotaComp,
       "Ingresá el valor de la cuota no puede ser $0"
     );
+    console.log("error2")
   } else {
     setSuccessFor(valordelacuotaComp);
   }
-
-  if (valordelacuotaCompInput2 === "") {
+  if (valordelacuotaCompInput2 == ''|| valordelacuotaCompInput2 == "$0") {
     setErrorFor(
       valordelacuotaComp2,
       "Ingresá el valor de la cuota de la segunda opción"
@@ -185,14 +177,6 @@ function checkInputs() {
     setSuccessFor(valordelacuotaComp2);
   }
   
-  if (valordelacuotaCompInput2 == "$0") {
-    setErrorFor(
-      valordelacuotaComp2,
-      "Ingresá el valor de la cuota no puede ser $0"
-    );
-  } else {
-    setSuccessFor(valordelacuotaComp2);
-  }
 
   const inflacionInput = inflacion.value.trim();
   if (inflacionInput === "") {
@@ -201,7 +185,7 @@ function checkInputs() {
     setSuccessFor(inflacion);
   }
   const impuestosInput = impuestos.value.trim();
-  if (impuestosInput === "") {
+  if (impuestosInput === "%") {
     setErrorFor(
       impuestos,
       "Ingresá el valor del impuesto por pago con tarjeta, si querés no incluirlo podés Ingresá 0%"
@@ -209,20 +193,6 @@ function checkInputs() {
   } else {
     setSuccessFor(impuestos);
   }
-
-  // Chip1
-
-  /* if (chips1.contains(chips1.querySelector(".selected")) === false) {  
-  console.log("Error")
-  setErrorFor(
-    chips1__error,
-    "Elegí la cantidad de cuotas de la primera opción de financiación"
-  );
-  } else {
-    console.log("Success")
-    setSuccessFor(chips1__error);    
-  } */
-
   if (
     document.querySelector(".selected") == null ||
     document.querySelector(".selected").value == ""
@@ -235,7 +205,6 @@ function checkInputs() {
     setSuccessFor(chips1__error);
   }
 
-
   if (
     document.querySelector(".selected2") == null ||
     document.querySelector(".selected2").value == ""
@@ -247,20 +216,51 @@ function checkInputs() {
   } else {
     setSuccessFor(chips2__error);
   }
-  if (document.querySelector(".selected").value == 0) {
-    setErrorFor(chips1__error, "La cantidad de cuotas no puede ser 0");
-  } else {
-    setSuccessFor(chips1__error);
+
+  //
+  const element = document.querySelector(".selected");
+  if (element != null) {
+    if (document.querySelector(".selected").value == 0) {
+      setErrorFor(chips1__error, "La cantidad de cuotas no puede ser 0");
+    } else {
+      setSuccessFor(chips1__error);
+    }
+  }   //
+
+  const element2 = document.querySelector(".selected2");
+  if (element2 != null) {
+    if (document.querySelector(".selected2").value == 0) {
+      setErrorFor(chips1__error, "La cantidad de cuotas no puede ser 0");
+    } else {
+      setSuccessFor(chips1__error);
+    }
   }
-  if (document.querySelector(".selected2").value == 0) {
-    setErrorFor(chips2__error, "La cantidad de cuotas no puede ser 0");
+
+  //
+
+  // Funcion para validar que el input sea un numero
+  function isNumeric(str) {
+    if (typeof str != "string") return false // we only process strings!  
+    return !isNaN(str) && // use type coercion to parse the _entirety_ of the string (`parseFloat` alone does not do this)...
+           !isNaN(parseFloat(str)) // ...and ensure strings of whitespace fail
+  }
+
+  if(isNumeric(impuestos.value.replace("%", "")) === false){
+    setErrorFor(impuestos, "Debes ingresar un número, si quieres no incluir el impuesto podés ingresar 0%");
   } else {
-    setSuccessFor(chips2__error);
+    setSuccessFor(impuestos);
+  } 
+  if(isNumeric(inflacion.value.replace("%", "")) === false){
+    setErrorFor(inflacion, "Debes ingresar un número, si querés tener en cuenta la inflación podés ingresar 0%");
+  } else {
+    setSuccessFor(inflacion);
   } 
   if (document.querySelectorAll(".error__message").length == 0) {
     myFunction();
   }
+  
 }
+
 
 function setErrorFor(input, message) {
   //const formControl = input.parentElement;
