@@ -470,7 +470,7 @@ html body .cuotas__app form .error__message {
   order: -2;
 }
 
-#resultados > *, .ResultCard {
+#resultados > * {
   font-weight: 500;
   font-size: small;
   margin-top: 8px;
@@ -483,7 +483,7 @@ html body .cuotas__app form .error__message {
   box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.11), 0px 3px 14px rgba(0, 0, 0, 0.09), 0px 5px 5px rgba(0, 0, 0, 0.16);
 }
 @media (min-width: 1025px) {
-  #resultados > *, .ResultCard {
+  #resultados > * {
     /* big landscape tablets, laptops, and desktops */
     max-width: 1000px;
     margin-top: 24px;
@@ -494,10 +494,10 @@ html body .cuotas__app form .error__message {
     border-radius: 7px;
     box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.11), 0px 3px 14px rgba(0, 0, 0, 0.09), 0px 5px 5px rgba(0, 0, 0, 0.16);
   }
-  #resultados > * #mensajederesultado4, .ResultCard #mensajederesultado4 {
+  #resultados > * #mensajederesultado4 {
     color: red;
   }
-  #resultados > * #resultado__detalle, .ResultCard #resultado__detalle {
+  #resultados > * #resultado__detalle {
     font-size: small;
   }
 }
@@ -666,37 +666,4 @@ html body .cuotas__app form .error__message {
   text-align: center;
   color: white;
   font-size: smaller;
-}
-
-.Investments {
-  width: 90%;
-  margin: auto;
-}
-.Investments .Investments__MainTitle {
-  text-decoration: none;
-}
-.Investments h4 {
-  font-size: medium;
-  margin-top: 16px;
-}
-.Investments .Investments__Options {
-  width: 90%;
-  margin: auto;
-  display: flex;
-  justify-content: space-around;
-}
-.Investments .Investments__Options .active {
-  font-weight: 900;
-}
-.Investments .Investments__Options .Investments__Option1 {
-  color: rgb(0, 156, 189);
-}
-.Investments .Investments__Options .Investments__Option2 {
-  color: #F04E98;
-}
-.Investments .Investments__Options .Investments__Option1 {
-  color: rgb(0, 156, 189);
-}
-.Investments .Investments__Options .Investments__Option2 {
-  color: #F04E98;
 }/*# sourceMappingURL=style.css.map */

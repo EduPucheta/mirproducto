@@ -448,7 +448,7 @@ html {
   }
 }
 
-#resultados > *, .ResultCard {
+#resultados > * {
   font-weight: 500;
   font-size: small;
   margin-top: $uxg-spacing-2;
@@ -642,40 +642,4 @@ html {
   text-align: center;
   color: white;
   font-size: smaller;
-}
-
-
-.Investments{
-  width: 90%;   
-  margin: auto;
-  .Investments__MainTitle{
-    text-decoration: none;
-  }
-  h4{
-    font-size: medium;
-    margin-top: $uxg-spacing-3; 
-  }	  
-  .Investments__Options{
-    width: 90%;   
-    margin: auto;
-    display: flex; 
-    justify-content: space-around;
-
-      .active{
-        font-weight: 900;  
-      }
-
-      .Investments__Option1{
-        color: $color-secondary-1;
-      }
-      .Investments__Option2{
-        color: $color-secondary-2;
-      }
-    .Investments__Option1{
-      color: $color-secondary-1;
-    }
-    .Investments__Option2{
-      color: $color-secondary-2;
-    }
-  }
 }
