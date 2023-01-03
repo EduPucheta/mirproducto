@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mangos</title>
+    <!-- Google Tag Manager -->
+    <script>
+        (function (w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({
+                "gtm.start": new Date().getTime(),
+                event: "gtm.js",
+            });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != "dataLayer" ? "&l=" + l : "";
+            j.async = true;
+            j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, "script", "dataLayer", "GTM-MD3JLDZ");
+    </script>
+    <!-- End Google Tag Manager -->
+    <link href="https://fonts.googleapis.com/css?family=Inter" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="main.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@latest/dist/Chart.min.js"></script>
+    <link rel="icon" type="image/x-icon" href=".\assets\logo-removebg-preview.png" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+  integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous" />
+  <link rel="stylesheet" href="./css/style.css" />
+    <meta property="og:title" content="Mangos: simulador de opciones de financiación" />
+    <meta property="og:type" content="website" />
+    <meta property="og:description" content="Compará entre diferentes opciones de financiación y descubrí como te conviene pagar tus compras." /> 
+    <meta property="og:url" content="https://mangos.world" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image" content="https://raw.githubusercontent.com/EduPucheta/mirproducto/main/assets/logo-removebg-preview.png"  />    
+    <meta property="og:image:width" content="288" />
+    <meta property="og:image:height" content="286" />
+    <meta property="og:site_name" content="Mangos" /> 
+</head>
+
+<body>
+    <div class="background">
+        <!-- Google Tag Manager (noscript) -->
+        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MD3JLDZ" height="0" width="0"
+                style="display: none; visibility: hidden"></iframe></noscript>
+        <div id="lista-api"></div>
+        <!-- End Google Tag Manager (noscript) -->
+        <!-- Just an image -->
+        <nav class="navbar navbar-expand-lg navbar-dark dark-color">
+            <div class="container-fluid nav__container-fluid"> 
+              <a class="navbar-brand" href="/">
+                <img src=".\assets\mangos-logo.png" alt="" class="logo"/>              </a>
+
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto  mb-2 mb-lg-0 ">
+                  <li class="nav-item nav-item__right"> 
+                    <a id="myBtn" class="nav-link nav-link2 nav__nav-item__link">Como funciona</a>
+                  </li>
+                  <li class="nav-item nav-item__right">
+                    <a class="nav-link nav-link2 nav__nav-item__link" aria-current="page" href="./pages/formulario.html">Conceptos (Proximamente) </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+        <!-- The Modal -->
+        <div id="myModal" class="modal">
+            <!-- Modal content -->
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <p class="modal-content__title">Bienvenido a Mangos! 👋🏼</p>
+                <p>
+                    Compará entre dos opciones de financiación y descubrí como te
+                    conviene pagar tu compra teniendo en cuenta la inflación y la forma
+                    de pago que elijas.
+                </p>
+                <p>
+                    Para cada opción elegí en cuantas cuotas podés pagar y el valor de
+                    cada cuota.
+                </p>
+                <p>
+                    A demás del plan en cuotas podés elegir como opción pagar en contado
+                    eligiendo la forma de pago "Contado" e ingresando el valor total de
+                    la compra.
+                </p>
+                <p>
+                    La mejor opción de financiación será la que genere el menor valor
+                    ajustado por inflación más impuestos.
+                </p>
+                <p>
+                    Ejemplo: no sabés si te conviene, comprar en 3 cuotas de 500$ o en 6 cuotas de 250$.
+                </p>
+                <p>
+                    Ingresar de la siguiente forma: en primera opción elegir 3 cuotas, valor de cada cuota 500$. <br>
+                    En la segúnda opción: 6 cuotas, valor de cada cuota 250$. <br>
+                    Darle click en calcular y te dirá la mejor opción.  
+                </p>
+                <button class="modal-content__start__button">Empezar! 😎</button>
+            </div>
+        </div>
+        <h1>404</h1>
+</body>
+</html>
