@@ -25,13 +25,14 @@
     </script>
     <!-- End Google Tag Manager -->
     <link href="https://fonts.googleapis.com/css?family=Inter" rel="stylesheet" />
-    <link rel="stylesheet" href="./css/style.css" />
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="result.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@latest/dist/Chart.min.js"></script>
     <link rel="icon" type="image/x-icon" href=".\assets\logo-removebg-preview.png" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous" />
+    <link rel="stylesheet" href="./css/style.css" /> 
 </head>
 
 <body>
@@ -92,6 +93,26 @@
             <span>
                 <div id="table"></div>
             </span>
+
+    <div class="Investments ResultCard">
+    <h2 class="Investments__MainTitle">Opciones de inversión</h2> 
+    <ul class="nav nav-tabs Investments__Options" id="myTab" role="tablist">
+        <li class="nav-item " role="presentation">
+            <button class="nav-link active Investments__Option1" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button"
+                role="tab" aria-controls="home-tab-pane" aria-selected="true">Opción 1</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link Investments__Option2" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button"
+                role="tab" aria-controls="profile-tab-pane" aria-selected="false">Opción 2</button>
+        </li>
+    </ul>
+    <div class="tab-content Investments__tabcontent" id="myTabContent">
+        <div class="tab-pane fade show active Investments__content__option1" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
+            </div>
+        <div class="tab-pane fade Investments__content__option2" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Atque modi quia est vitae asperiores sunt! Perspiciatis id officiis quo, corporis non beatae rem adipisci incidunt facere suscipit, similique tenetur dolor delectus! Cum incidunt nostrum eius officia, a corporis, deserunt dicta culpa porro, neque cupiditate. Praesentium quo deserunt debitis adipisci reiciendis vel quibusdam magni porro eum ad blanditiis, saepe iure, suscipit assumenda, quae modi in et est laborum aut exercitationem officia eius! Omnis animi adipisci fugiat corrupti officia aperiam, nulla quisquam, dolor rerum, velit quos numquam cum. Excepturi distinctio esse dolorem.
+        </div>
+    </div>
+</div>        
             <button class="share">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M16 1H4C2.9 1 2 1.9 2 3V17H4V3H16V1ZM19 5H8C6.9 5 6 5.9 6 7V21C6 22.1 6.9 23 8 23H19C20.1 23 21 22.1 21 21V7C21 5.9 20.1 5 19 5ZM19 21H8V7H19V21Z" fill="white"/>
