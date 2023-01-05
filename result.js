@@ -519,6 +519,7 @@ const fetchJsonNaranjaX = fetch(urlJson)
 const updateRendimientosFetchNaranjaX = async () => {
   const rendimientoAnualNaranjaX = await fetchJsonNaranjaX;
   rendimientoMensual__NaranjaX = (Math.pow(1 + parseFloat(rendimientoAnualNaranjaX.replace("%","")) / 100, 1 / 12) - 1) ;
+  // Opción 1 
   let rendimientosNaranjaX = [];
   ValorTotalDeLasCuotas = valordelacuota4 * cantidaddecuotas;
   for (let i = 0; i < cantidaddecuotas; i+=1) {
@@ -540,12 +541,25 @@ const updateRendimientosFetchNaranjaX = async () => {
   rentNx = document.createElement("span");
   rentNx.setAttribute("class", "NaranjaX");
   document.querySelector(".Investments__content__option1").append(rentNx);  
-
-
-
-
   rentNx.textContent = "Si en lugar de pagar en contado mantenés tu plata en una cuenta de Naranja X a un rendimiento del " + rendimientoAnualNaranjaX + " anual, y mes a mes vas sacando la plata para pagar la tarjeta vas a ganar unos "  + formatter.format(sumArray(rendimientosNaranjaX)) +  " adicionales (Sin actualizar por inflación)."
+  
+  // Opción 2
 
+  let rendimientosNaranjaX2 = [];
+  ValorTotalDeLasCuotas2 = valordelacuota4Op2 * cantidaddecuotasOp2; 
+  for (let i = 0; i < cantidaddecuotasOp2; i+=1) {
+    rendimientosNaranjaX2.push((ValorTotalDeLasCuotas2-valordelacuota4Op2*i)*rendimientoMensual__NaranjaX)
+  }
+
+  rentNx__Title2 = document.createElement("h4");
+  rentNx__Title2.setAttribute("class", "NaranjaX__Title2");
+  rentNx__Title2.textContent = "Inversión en Naranja X";
+  document.querySelector(".Investments__content__option2").append(rentNx__Title2);
+
+  rentNx2 = document.createElement("span");
+  rentNx2.setAttribute("class", "NaranjaX2");
+  document.querySelector(".Investments__content__option2").append(rentNx2);
+  rentNx2.textContent = "Si en lugar de pagar en contado mantenés tu plata en una cuenta de Naranja X a un rendimiento del " + rendimientoAnualNaranjaX + " anual, y mes a mes vas sacando la plata para pagar la tarjeta vas a ganar unos "  + formatter.format(sumArray(rendimientosNaranjaX2)) +  " adicionales (Sin actualizar por inflación)."
 }; 
 updateRendimientosFetchNaranjaX();
 
@@ -563,6 +577,7 @@ const fetchJsonMercadoPago= fetch(urlJson)
 const updateRendimientosFetchMercadoPago= async () => {
   const rendimientoAnualMercadoPago= await fetchJsonMercadoPago;
   rendimientoMensual__MercadoPago= (Math.pow(1 + parseFloat(rendimientoAnualMercadoPago.replace("%","")) / 100, 1 / 12) - 1) ;
+    // Opción 1 
   let rendimientosMercadoPago = [];
   ValorTotalDeLasCuotas = valordelacuota4 * cantidaddecuotas;
   for (let i = 0; i < cantidaddecuotas; i+=1) {
@@ -586,7 +601,22 @@ const updateRendimientosFetchMercadoPago= async () => {
   document.querySelector(".Investments__content__option1").append(rentMP); 
 
   rentMP.textContent = "Si en lugar de pagar en contado mantenés tu plata en una cuenta de Mercado Pago a un rendimiento del " + rendimientoAnualMercadoPago + " anual, y mes a mes vas sacando la plata para pagar la tarjeta vas a ganar unos "  + formatter.format(sumArray(rendimientosMercadoPago)) +  " adicionales (Sin actualizar por inflación)."
+  // Opción 2
 
+  let rendimientosMercadoPago2 = [];
+  ValorTotalDeLasCuotas2 = valordelacuota4Op2 * cantidaddecuotasOp2;
+  for (let i = 0; i < cantidaddecuotasOp2; i+=1) {
+    rendimientosMercadoPago2.push((ValorTotalDeLasCuotas2-valordelacuota4Op2*i)*rendimientoMensual__MercadoPago)
+  }
+  rentMp2__Title = document.createElement("h4");
+  rentMp2__Title.setAttribute("class", "MP__Title2");
+  rentMp2__Title.textContent = "Inversión en Mercado Pago";
+  document.querySelector(".Investments__content__option2").append(rentMp2__Title);
+
+  rentMP2 = document.createElement("span");
+  rentMP2.setAttribute("class", "MercadoPago2");
+  document.querySelector(".Investments__content__option2").append(rentMP2);
+  rentMP2.textContent = "Si en lugar de pagar en contado mantenés tu plata en una cuenta de Mercado Pago a un rendimiento del " + rendimientoAnualMercadoPago + " anual, y mes a mes vas sacando la plata para pagar la tarjeta vas a ganar unos "  + formatter.format(sumArray(rendimientosMercadoPago2)) +  " adicionales (Sin actualizar por inflación)."
 }; 
 updateRendimientosFetchMercadoPago();
 
