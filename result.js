@@ -125,20 +125,57 @@ document.addEventListener(
   sessionStorage.setItem("session", true)
 );
 
-let modal = document.getElementById("myModal");
-let btnModal = document.getElementById("myBtn");
-let cross = document.getElementsByClassName("close")[0];
 
-btnModal.onclick = function () {
-  modal.style.display = "block";
+// FUNCION MODAL 
+function displaymodal() {
+  md = document.createElement("div");
+  md.id = "myModal";
+  md.classList.add("modal");
+  document.querySelector("nav").append(md);  
+  md.style.display = "block"; 
+  md.innerHTML = `            <!-- Modal content -->
+  <div class="modal-content animate__animated animate__fadeInUpBig">
+      <span class="close">&times;</span>
+      <p class="modal-content__title">Bienvenido a Mangos! 👋🏼</p>
+      <p>
+          Compará entre dos opciones de financiación y descubrí como te
+          conviene pagar tu compra teniendo en cuenta la inflación y la forma
+          de pago que elijas.
+      </p>
+      <p>
+          Para cada opción elegí en cuantas cuotas podés pagar y el valor de
+          cada cuota.
+      </p>
+      <p>
+          A demás del plan en cuotas podés elegir como opción pagar en contado
+          eligiendo la forma de pago "Contado" e ingresando el valor total de
+          la compra.
+      </p>
+      <p>
+          La mejor opción de financiación será la que genere el menor valor
+          ajustado por inflación más impuestos.
+      </p>
+      <p>
+          Ejemplo: no sabés si te conviene, comprar en 3 cuotas de 500$ o en 6 cuotas de 250$.
+      </p>
+      <p>
+          Ingresar de la siguiente forma: en primera opción elegir 3 cuotas, valor de cada cuota 500$. <br>
+          En la segúnda opción: 6 cuotas, valor de cada cuota 250$. <br>
+          Darle click en calcular y te dirá la mejor opción.  
+      </p>
+      <button class="modal-content__start__button">Empezar! 😎</button>
+  </div>`;
+  //let cross = document.getElementsByClassName("close")[0];
+  let modal = document.getElementById("myModal");
+document.getElementsByClassName("close")[0].onclick = function () {
+  document.querySelector(".modal-content").classList.remove("animate__fadeInUpBig");
+  document.querySelector(".modal-content").classList.add("animate__fadeOutDownBig");
+  setTimeout(function(){ modal.remove(); }, 500);
 };
-
-cross.onclick = function () {
-  modal.style.display = "none";
-};
-
 document.querySelector(".modal-content__start__button").onclick = function () {
-  modal.style.display = "none";
+  document.querySelector(".modal-content").classList.remove("animate__fadeInUpBig");
+  document.querySelector(".modal-content").classList.add("animate__fadeOutDownBig");
+  setTimeout(function(){ modal.remove(); }, 500);
 };
 
 // Cerrar cuando se hace click fuera del modal
@@ -147,6 +184,20 @@ window.onclick = function (event) {
     modal.style.display = "none";
   }
 };
+};
+
+
+let btnModal = document.getElementById("myBtn");
+btnModal.addEventListener("click", displaymodal); 
+
+
+
+
+
+// Muestra el modal de bienvenida si es la primera sesión
+if (localStorage.getItem("visitCount") < 2) {
+  displaymodal(); 
+}
 
 //BOTON COPIAR
 $(".share").on("click", function () {

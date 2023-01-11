@@ -197,6 +197,7 @@ html body .modal-content p {
   margin-top: 8px;
   margin-left: 8px;
   margin-right: 8px;
+  font-size: small;
 }
 html body .cuotas__app {
   margin-left: 5%;
