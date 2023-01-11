@@ -460,16 +460,12 @@ html body .cuotas__app form .error__message {
 }
 #resultados #mensajederesultado3 {
   font-weight: 700;
-  order: -3;
 }
 #resultados #mensajederesultado3 .firstoption {
   color: rgb(0, 156, 189);
 }
 #resultados #mensajederesultado3 .secondoption {
   color: #F04E98;
-}
-#resultados #table {
-  order: -2;
 }
 
 #resultados > *, .ResultCard {

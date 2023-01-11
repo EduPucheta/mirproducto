@@ -218,6 +218,7 @@ function copiedToClipboard() {
 function myFunction2(e) {
   g = document.createElement("div");
   g.setAttribute("id", "resultados");
+
   document.querySelector(".results__page").prepend(g);
   document.querySelector("#resultados").style.display = "flex";
   if (cantidaddecuotas > 0) {
@@ -286,7 +287,8 @@ function myFunction2(e) {
   actualValue$ResultOp2txt = formatter.format(valoractualresult2op2);
 
   firstResultMessage = document.createElement("span");
-  firstResultMessage.setAttribute("id", "mensajederesultado3");
+  firstResultMessage.setAttribute("id", "mensajederesultado3"); 
+  // firstResultMessage.classList.add("animate__fadeInRight"); 
   document.getElementById("resultados").appendChild(firstResultMessage);
 
   // CONDICIONALES
@@ -310,6 +312,112 @@ function myFunction2(e) {
     firstResultMessage.innerHTML =
       "Ambas opciones de financiación son indiferetes.";
   }
+
+  // IMPUESTO AL SELLO
+  impuestoAlSelloOp1 =
+    parseFloat(valordelacuota4) *
+    parseFloat(cantidaddecuotas) *
+    impuestoAlSello;
+  impuestoAlSelloOp2 =
+    parseFloat(valordelacuota4Op2) *
+    parseFloat(cantidaddecuotasOp2) *
+    impuestoAlSello;
+
+
+  // TABLA
+
+  myTable = document.createElement("span");
+  myTable.setAttribute("id", "table");
+  document.querySelector("#resultados").appendChild(myTable);
+
+  let employees = [
+    {
+      cant: "Cantidad de cuotas",
+      Cantidaddecuotas: cantidaddecuotas,
+      Cantidaddecuot: cantidaddecuotasOp2,
+    },
+    {
+      cant: "Valor de cada cuota",
+      Val1: formatter.format(valordelacuota4),
+      val1: formatter.format(valordelacuota4Op2),
+    },
+    {
+      val: "Suma total de las cuotas",
+      sum1: paymentsSum$Op1txt,
+      sum2: paymentsSum$Op2txt,
+    },
+    {
+      val: "Impuesto al pago con tarjeta",
+      val1: formatter.format(impuestoAlSelloOp1),
+      val2: formatter.format(impuestoAlSelloOp2),
+    },
+    {
+      val: "Suma ajustada por inflación más impuestos",
+      val1: actualValue$Resulttxt,
+      val2: actualValue$ResultOp2txt,
+    },
+  ];
+
+  let headers = ["", "1º Opción", "2º Opción"];
+
+  let table = document.createElement("table");
+  let headerRow = document.createElement("tr");
+
+  headers.forEach((headerText) => {
+    let header = document.createElement("th");
+    let textNode = document.createTextNode(headerText);
+    header.appendChild(textNode);
+    headerRow.appendChild(header);
+  });
+
+  table.appendChild(headerRow);
+
+  employees.forEach((emp) => {
+    let row = document.createElement("tr");
+
+    Object.values(emp).forEach((text) => {
+      let cell = document.createElement("td");
+      let textNode = document.createTextNode(text);
+      cell.appendChild(textNode);
+      row.appendChild(cell);
+    });
+
+    table.appendChild(row);
+  });
+
+  myTable.appendChild(table);
+  if (valoractualresult2op2 > valoractualresult2) {
+    document.querySelector(
+      "#table > table > tr:nth-child(6) > td:nth-child(2)"
+    ).style.color = "#008744";
+  }
+  if (valoractualresult2op2 < valoractualresult2) {
+    document.querySelector(
+      "#table > table > tr:nth-child(6) > td:nth-child(3)"
+    ).style.color = "#008744";
+  }
+
+  myTableDetail = document.createElement("span");
+  myTableDetail.setAttribute("id", "tableDetail");
+  document.querySelector("#table").appendChild(myTableDetail);
+  myTableDetail.textContent =
+    "La inflación anual considerada  en el cálculo es de " +
+    String(anualInflation) +
+    "%." +
+    " Bajo el supuesto de que los ingresos aumenten  mes a mes a la par de la inflación el ahorro de elegir la mejor opción sobre la alternativa es de: ";
+  if (valoractualresult2op2 > valoractualresult2) {
+    myTableDetail.textContent +=
+      formatter.format(valoractualresult2op2 - valoractualresult2) + ".";
+  }
+  if (valoractualresult2op2 < valoractualresult2) {
+    myTableDetail.textContent +=
+      formatter.format(valoractualresult2 - valoractualresult2op2) + ".";
+  }
+  myTableDetail.textContent +=
+    " La tasa del impuesto al sello utilizada es de " +
+    impuestoAlSello * 100 +
+    "%.";
+
 
   // CHART 1
   if (cantidaddecuotas > 1) {
@@ -451,109 +559,7 @@ function myFunction2(e) {
     });
   }
 
-  // IMPUESTO AL SELLO
-  impuestoAlSelloOp1 =
-    parseFloat(valordelacuota4) *
-    parseFloat(cantidaddecuotas) *
-    impuestoAlSello;
-  impuestoAlSelloOp2 =
-    parseFloat(valordelacuota4Op2) *
-    parseFloat(cantidaddecuotasOp2) *
-    impuestoAlSello;
 
-  // TABLA
-
-  myTable = document.createElement("span");
-  myTable.setAttribute("id", "table");
-  document.querySelector("#resultados").appendChild(myTable);
-
-  let employees = [
-    {
-      cant: "Cantidad de cuotas",
-      Cantidaddecuotas: cantidaddecuotas,
-      Cantidaddecuot: cantidaddecuotasOp2,
-    },
-    {
-      cant: "Valor de cada cuota",
-      Val1: formatter.format(valordelacuota4),
-      val1: formatter.format(valordelacuota4Op2),
-    },
-    {
-      val: "Suma total de las cuotas",
-      sum1: paymentsSum$Op1txt,
-      sum2: paymentsSum$Op2txt,
-    },
-    {
-      val: "Impuesto al pago con tarjeta",
-      val1: formatter.format(impuestoAlSelloOp1),
-      val2: formatter.format(impuestoAlSelloOp2),
-    },
-    {
-      val: "Suma ajustada por inflación más impuestos",
-      val1: actualValue$Resulttxt,
-      val2: actualValue$ResultOp2txt,
-    },
-  ];
-
-  let headers = ["", "1º Opción", "2º Opción"];
-
-  let table = document.createElement("table");
-  let headerRow = document.createElement("tr");
-
-  headers.forEach((headerText) => {
-    let header = document.createElement("th");
-    let textNode = document.createTextNode(headerText);
-    header.appendChild(textNode);
-    headerRow.appendChild(header);
-  });
-
-  table.appendChild(headerRow);
-
-  employees.forEach((emp) => {
-    let row = document.createElement("tr");
-
-    Object.values(emp).forEach((text) => {
-      let cell = document.createElement("td");
-      let textNode = document.createTextNode(text);
-      cell.appendChild(textNode);
-      row.appendChild(cell);
-    });
-
-    table.appendChild(row);
-  });
-
-  myTable.appendChild(table);
-  if (valoractualresult2op2 > valoractualresult2) {
-    document.querySelector(
-      "#table > table > tr:nth-child(6) > td:nth-child(2)"
-    ).style.color = "#008744";
-  }
-  if (valoractualresult2op2 < valoractualresult2) {
-    document.querySelector(
-      "#table > table > tr:nth-child(6) > td:nth-child(3)"
-    ).style.color = "#008744";
-  }
-
-  myTableDetail = document.createElement("span");
-  myTableDetail.setAttribute("id", "tableDetail");
-  document.querySelector("#table").appendChild(myTableDetail);
-  myTableDetail.textContent =
-    "La inflación anual considerada  en el cálculo es de " +
-    String(anualInflation) +
-    "%." +
-    " Bajo el supuesto de que los ingresos aumenten  mes a mes a la par de la inflación el ahorro de elegir la mejor opción sobre la alternativa es de: ";
-  if (valoractualresult2op2 > valoractualresult2) {
-    myTableDetail.textContent +=
-      formatter.format(valoractualresult2op2 - valoractualresult2) + ".";
-  }
-  if (valoractualresult2op2 < valoractualresult2) {
-    myTableDetail.textContent +=
-      formatter.format(valoractualresult2 - valoractualresult2op2) + ".";
-  }
-  myTableDetail.textContent +=
-    " La tasa del impuesto al sello utilizada es de " +
-    impuestoAlSello * 100 +
-    "%.";
 
 // Inversión en Naranja X
 let urlJson = "datos.json";
@@ -675,6 +681,17 @@ updateRendimientosFetchMercadoPago();
 
 document.addEventListener("DOMContentLoaded", myFunction2())
 
+// Animations
+
+document.addEventListener("DOMContentLoaded", function(event) {
+g = document.querySelector("#resultados")  
+let children = g.children;
+for (let i = 0; i < children.length; i++) {
+  let tableChild = children[i];
+  tableChild.classList.add("animate__animated", "animate__fadeInRight"); 
+  duration = (1+i*0.3)+"s" 
+  tableChild.style.setProperty('--animate-duration', duration) 
+} });
 
 
 

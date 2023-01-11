@@ -435,7 +435,6 @@ html {
   #mensajederesultado3 {
     font-weight: 700;
     //order: 1;
-    order: -3;
     .firstoption{
       color: $color-secondary-1
     }
@@ -443,10 +442,7 @@ html {
       color: $color-secondary-2
     }
   }
-  #table {
-    //order: 1;
-    order: -2;
-  }
+
 }
 
 #resultados > *, .ResultCard {
